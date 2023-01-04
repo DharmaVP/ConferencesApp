@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+
+    <Properties>
+        <Property name="level">INFO</Property>
+        <Property name="logs_size">1 MB</Property>
+        <!-- ${sys:catalina.home}/logs  -->
+        <Property name="logs_path">C:\Users\Volodymyr\OneDrive\Рабочий стол\Java\Final Project\ConfApp\logs</Property>
+        <property name="pattern_console">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</property>
+        <property name="pattern_file">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{5} - %msg%n</property>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern_console}"/>
+        </Console>
+
+        <RollingFile name="File" fileName="${logs_path}/conf_app.log" append="true"
+                     filePattern="${logs_path}/$${date:yyyy-MM}/conf_app-%d{yyyy-MM-dd}_%i.log.gz">
+            <PatternLayout pattern="${pattern_file}"/>
+            <Policies>
+                <!--<OnStartupTriggeringPolicy />-->
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="${logs_size}" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logs_path}" maxDepth="2">
+                    <IfFileName glob="*/conf_app-*.log.gz" />
+                    <IfLastModified age="P1D" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="${level}">
+            <Appender-ref ref="Console" level="WARN"/>
+            <Appender-ref ref="File"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
