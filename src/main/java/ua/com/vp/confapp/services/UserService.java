@@ -10,7 +10,7 @@ public interface UserService extends Service<UserDTO> {
 
     UserDTO findByEmailAndPassword(String email, String password) throws ServiceException;
 
-    void changeRole(Long userId);
+    void changeRole(Long userId, String newRole) throws ServiceException;
 
 //    void delete(Long userId);
 //

@@ -446,7 +446,6 @@ a {
 }
 
 .w3-sidebar {
-    height: 100%;
     width: 200px;
     background-color: #fff;
     position: fixed !important;
@@ -1361,8 +1360,8 @@ a {
 }
 
 .w3-button:hover {
-    color: #ffffff !important;
-    background-color: #ee82ee !important
+    color: #000 !important;
+    background-color: #ccc !important
 }
 
 .w3-transparent, .w3-hover-none:hover {

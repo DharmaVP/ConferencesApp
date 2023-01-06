@@ -36,7 +36,7 @@ public class SignUpCommand implements Command {
         String password = request.getParameter(PASSWORD);
         String confirmPassword = request.getParameter(CONFIRM_PASSWORD);
 
-        String page = FINISH_REGISTRATION_PAGE;
+        String page = PERSONAL_INFO;
 
         Map<String, String> messages = new HashMap<String, String>();
         request.setAttribute("errors", messages);

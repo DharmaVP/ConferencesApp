@@ -2,6 +2,7 @@ package ua.com.vp.confapp.command.action.user;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.com.vp.confapp.command.CommandResult;
@@ -16,8 +17,7 @@ import ua.com.vp.confapp.utils.Validator;
 import java.util.HashMap;
 import java.util.Map;
 
-import static ua.com.vp.confapp.command.constants.Parameters.EMAIL;
-import static ua.com.vp.confapp.command.constants.Parameters.PASSWORD;
+import static ua.com.vp.confapp.command.constants.Parameters.*;
 import static ua.com.vp.confapp.command.constants.WebPages.*;
 
 public class SignInCommand implements Command {
@@ -45,8 +45,9 @@ public class SignInCommand implements Command {
             return new CommandResult(page);
         }
         try {
-            UserDTO dto = userService.findByEmailAndPassword(email, password);
-            request.getSession().setAttribute("user", dto);
+            UserDTO user = userService.findByEmailAndPassword(email, password);
+            HttpSession session = request.getSession();
+            session.setAttribute(SESSION_USER, user);
         } catch (ServiceException e) {
             messages.put("error", e.getMessage());
             page = SIGN_IN_PAGE;

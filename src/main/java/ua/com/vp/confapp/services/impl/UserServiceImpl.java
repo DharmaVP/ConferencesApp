@@ -68,7 +68,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeRole(Long userId) {
+    public void changeRole(Long userId, String newRole) throws ServiceException{
+
 
     }
 
