@@ -11,10 +11,10 @@
 
 <c:choose>
     <c:when test="${empty sessionScope.user}">
-        <a href="sign_in.jsp" class="w3-bar-item w3-button w3-hover-pink"><i class="fa fa-sign-in"></i> ${signin}</a>
+        <a href="controller?action=get_sign_in_page" class="w3-bar-item w3-button w3-hover-pink"><i class="fa fa-sign-in"></i> ${signin}</a>
     </c:when>
     <c:otherwise>
-        <a href="my_space.jsp" class="w3-bar-item w3-button w3-hover-pink"><i class="fa fa-calendar"></i> MY SPACE</a>
+        <a href="controller?action=enter_cabinet" class="w3-bar-item w3-button w3-hover-pink"><i class="fa fa-calendar"></i> MY SPACE</a>
     </c:otherwise>
 </c:choose>
 

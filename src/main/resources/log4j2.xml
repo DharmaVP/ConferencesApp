@@ -27,7 +27,7 @@
             <DefaultRolloverStrategy>
                 <Delete basePath="${logs_path}" maxDepth="2">
                     <IfFileName glob="*/conf_app-*.log.gz" />
-                    <IfLastModified age="P1D" />
+                    <IfLastModified age="P60D" />
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingFile>

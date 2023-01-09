@@ -1,4 +1,4 @@
-package ua.com.vp.confapp.command.action.user;
+package ua.com.vp.confapp.command.action.guest;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -6,7 +6,9 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.com.vp.confapp.command.CommandResult;
+import ua.com.vp.confapp.command.CommandUtil;
 import ua.com.vp.confapp.command.action.Command;
+import ua.com.vp.confapp.command.constants.CommandType;
 import ua.com.vp.confapp.dto.UserDTO;
 import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.exception.ValidationException;
@@ -20,60 +22,37 @@ import java.util.Map;
 import static ua.com.vp.confapp.command.constants.Parameters.*;
 import static ua.com.vp.confapp.command.constants.WebPages.*;
 
-public class SignUpCommand implements Command {
+public class SignInCommand implements Command {
     private static Logger LOGGER = LogManager.getLogger(SignUpCommand.class);
     private UserService userService;
 
-    public SignUpCommand() {
+    public SignInCommand() {
         userService = ServiceFactory.getInstance().getUserService();
     }
 
-
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-
         String email = request.getParameter(EMAIL);
         String password = request.getParameter(PASSWORD);
-        String confirmPassword = request.getParameter(CONFIRM_PASSWORD);
 
-        String page = PERSONAL_INFO;
-
-        Map<String, String> messages = new HashMap<String, String>();
+        String page = CommandUtil.getCommandToRedirect(CommandType.ENTER_CABINET);
+        Map<String, String> messages = new HashMap<>();
         request.setAttribute("errors", messages);
 
         try {
-            Validator.validateEmail(email);
+            Validator.validateNonEmptyFields(email, password);
         } catch (ValidationException e) {
             messages.put("email", e.getMessage());
-            page = SIGN_UP_PAGE;
-        }
-
-        try {
-            Validator.validatePassword(password);
-        } catch (ValidationException e) {
-            messages.put("password", e.getMessage());
-            page = SIGN_UP_PAGE;
-        }
-        try {
-            Validator.validateConfirmPassword(password, confirmPassword);
-        } catch (ValidationException e) {
-            messages.put("confirm_password", e.getMessage());
-            page = SIGN_UP_PAGE;
+            page = SIGN_IN_PAGE;
             return new CommandResult(page);
         }
-
         try {
-            UserDTO user = userService.create(email, password);
-            request.setAttribute("success", "You've registered");
+            UserDTO user = userService.findByEmailAndPassword(email, password);
             HttpSession session = request.getSession();
-            session.setAttribute(MESSAGE, SUCCEED_REGISTER);
-            session.setAttribute(MESSAGE, FINISH_REGISTRATION);
             session.setAttribute(SESSION_USER, user);
-            LOGGER.info("user with login = " + email + " was registered");
         } catch (ServiceException e) {
-            request.getSession().removeAttribute(ERROR);
-            request.getSession().setAttribute(ERROR, e.getMessage());
-            page = SIGN_UP_PAGE;
+            messages.put("error", e.getMessage());
+            page = SIGN_IN_PAGE;
             return new CommandResult(page);
         }
         return new CommandResult(page, true);

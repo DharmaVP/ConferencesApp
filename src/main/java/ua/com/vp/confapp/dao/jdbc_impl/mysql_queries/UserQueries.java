@@ -10,7 +10,7 @@ public final class UserQueries {
                     "WHERE u.user_id = ?";
 
     public static final String SQL_FIND_USER_BY_EMAIL =
-            "SELECT * FROM users, role WHERE email = ?";
+            "SELECT * FROM users AS u LEFT JOIN role AS r ON u.role_id = r.role_id WHERE email = ?";
 
     public static final String SQL_FIND_ALL_USERS =
             "SELECT * FROM users AS u INNER JOIN role AS r ON u.role_id = r.role_id";

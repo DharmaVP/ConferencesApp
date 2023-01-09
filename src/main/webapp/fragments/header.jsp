@@ -1,10 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language"
-       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-       scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="resources"/>
 
@@ -18,20 +14,16 @@
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
-        <a href="index.jsp#home" class="w3-bar-item w3-button w3-hover-white"><img src="images/logo2.png" alt="logo"
+        <a href="${pageContext.request.contextPath}/index.jsp" class="w3-bar-item w3-button w3-hover-white"><img src="${pageContext.request.contextPath}/images/logo2.png" alt="logo"
                                                                                    style="width:90%;height:90%;"/></a>
         <!-- Right-sided navbar links -->
-        <div class="w3-right w3-hide-small w3-hide-medium">
+        <div class="w3-right w3-hide-small w3-hide-medium w3-margin">
             <a href="controller?action=all_events" class="w3-bar-item w3-button w3-hover-pink"> ${events}</a>
-            <a href="index.jsp#about" class="w3-bar-item w3-button w3-hover-pink"> ${about}</a>
-            <a href="index.jsp#contact" class="w3-bar-item w3-button w3-hover-pink"><i
+            <a href="${pageContext.request.contextPath}/index.jsp#about" class="w3-bar-item w3-button w3-hover-pink"> ${about}</a>
+            <a href="${pageContext.request.contextPath}/index.jsp#contact" class="w3-bar-item w3-button w3-hover-pink"><i
                     class="fa fa-envelope"></i> ${contact}</a>
-            <jsp:include page="signin_cabinet.jsp"/>
-            <form class="w3-bar-item w3-button w3-hover-white">
-                <label for="language"></label><select id="language" name="language" onchange="submit()">
-                <option value="en" ${language == 'en' ? 'selected' : ''}>En</option>
-                <option value="uk_UA" ${language == 'uk_UA' ? 'selected' : ''}>Uk</option>
-            </select>
+            <jsp:include page="signin_cabinet.jsp" />
+            <jsp:include page="language_selector.jsp" />
             </form>
         </div>
 
@@ -51,15 +43,10 @@
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">${close}
         ×</a>
     <a href="controller?action=all_events" class="w3-bar-item w3-button w3-hover-pink"> ${events}</a>
-    <a href="index.jsp#about" onclick="w3_close()" class="w3-bar-item w3-button"> ${about}</a>
-    <a href="index.jsp#contact" onclick="w3_close()" class="w3-bar-item w3-button"> ${contact}</a>
+    <a href="${pageContext.request.contextPath}/index.jsp#about" onclick="w3_close()" class="w3-bar-item w3-button"> ${about}</a>
+    <a href="${pageContext.request.contextPath}/index.jsp#contact" onclick="w3_close()" class="w3-bar-item w3-button"> ${contact}</a>
     <jsp:include page="signin_cabinet.jsp"/>
-    <form class="w3-bar-item w3-button w3-hover-white">
-        <select name="language" onchange="submit()">
-            <option value="en" ${language == 'en' ? 'selected' : ''}>En</option>
-            <option value="uk_UA" ${language == 'uk_UA' ? 'selected' : ''}>Uk</option>
-        </select>
-    </form>
+    <jsp:include page="language_selector.jsp" />
 </nav>
 
 <script>

@@ -90,7 +90,6 @@ public final class DAOUtil {
                 user.getPhoneNumber(),
                 user.getJobTitle(),
                 user.getOrganisation(),
-                user.getProfileImage(),
                 user.getId()
         };
     }

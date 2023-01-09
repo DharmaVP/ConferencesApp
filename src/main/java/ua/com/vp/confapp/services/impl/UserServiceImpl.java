@@ -10,13 +10,12 @@ import ua.com.vp.confapp.exception.ValidationException;
 import ua.com.vp.confapp.services.UserService;
 import ua.com.vp.confapp.utils.EmailNotifier;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static ua.com.vp.confapp.utils.ConverterDTO.convertToUser;
-import static ua.com.vp.confapp.utils.ConverterDTO.convertToUserDTO;
+import static ua.com.vp.confapp.utils.MapperDTO.convertToUser;
+import static ua.com.vp.confapp.utils.MapperDTO.convertToUserDTO;
 import static ua.com.vp.confapp.utils.PBKDF2Hasher.checkPassword;
 import static ua.com.vp.confapp.utils.PBKDF2Hasher.hashPassword;
 

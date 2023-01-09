@@ -10,7 +10,7 @@ import ua.com.vp.confapp.services.EventService;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ua.com.vp.confapp.utils.ConverterDTO.convertToEventDTO;
+import static ua.com.vp.confapp.utils.MapperDTO.convertToEventDTO;
 
 public class EventServiceImpl implements EventService {
     private final Transaction<DAO> transaction;

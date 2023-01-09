@@ -3,9 +3,9 @@ package ua.com.vp.confapp.command;
 
 import jakarta.servlet.http.HttpServletRequest;
 import ua.com.vp.confapp.command.action.*;
+import ua.com.vp.confapp.command.action.guest.*;
 import ua.com.vp.confapp.command.action.user.*;
 import ua.com.vp.confapp.command.constants.CommandType;
-import ua.com.vp.confapp.command.constants.RequestType;
 import ua.com.vp.confapp.exception.CommandException;
 
 import java.util.EnumMap;
@@ -23,15 +23,20 @@ public class CommandFactory {
         commands.put(SIGN_IN, new SignInCommand());
         commands.put(SIGN_UP, new SignUpCommand());
         commands.put(SIGN_OUT, new SignOutCommand());
-        commands.put(ALL_EVENTS, new AllEventsCommand());
+        commands.put(GET_SIGN_IN_PAGE, new SignInPageCommand());
+        commands.put(GET_SIGN_UP_PAGE, new SignUpPageCommand());
+        commands.put(GET_ALL_EVENTS, new AllEventsCommand());
         commands.put(REGISTER_FOR_EVENT, new RegisterForEventCommand());
+        commands.put(ENTER_CABINET, new EnterCabinetCommand());
+        commands.put(GET_PROFILE, new GetProfileCommand());
+        commands.put(EDIT_USER, new EditUserCommand());
 
 //        commands.put(ADD_EVENT, new AddEventCommand());
 //        commands.put(REMOVE_EVENT, new RemoveEventCommand());
 //        commands.put(EDIT_EVENT, new EditEventCommand());
 //        commands.put(EDIT_EVENT_PAGE, new EditEventPageCommand());
 //        commands.put(PROFILE, new ProfileCommand());
-//        commands.put(EDIT_USER, new EditUserCommand());
+
 //        commands.put(EDIT_USER_INFO, new EditUserInfoCommand());
 //        commands.put(EDIT_USER_PHOTO, new EditUserPhotoCommand());
 //        commands.put(DELETE_USER, new DeleteUserCommand());
@@ -58,7 +63,8 @@ public class CommandFactory {
     }
 
 
-    private CommandFactory() {}
+    private CommandFactory() {
+    }
 
 
     public static CommandFactory getInstance() {
@@ -77,7 +83,7 @@ public class CommandFactory {
         String command = request.getParameter(ACTION);
         CommandType commandType = CommandType.of(command);
 
-        if (!commandType.getRequestType().name().equals(request.getMethod())){
+        if (!commandType.getRequestType().name().equals(request.getMethod())) {
             throw new CommandException("Invalid type of request!");
         }
 

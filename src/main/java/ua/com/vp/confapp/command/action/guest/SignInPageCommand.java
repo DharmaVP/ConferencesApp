@@ -1,4 +1,4 @@
-package ua.com.vp.confapp.command.action.user;
+package ua.com.vp.confapp.command.action.guest;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,6 +13,6 @@ public class SignInPageCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-        return new CommandResult(SIGN_IN_PAGE, true);
+        return new CommandResult(SIGN_IN_PAGE);
     }
 }

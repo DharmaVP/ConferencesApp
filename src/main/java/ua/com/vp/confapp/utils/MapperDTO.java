@@ -7,10 +7,7 @@ import ua.com.vp.confapp.entities.Event;
 import ua.com.vp.confapp.entities.Report;
 import ua.com.vp.confapp.entities.User;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ConverterDTO {
+public class MapperDTO {
 
     public static User convertToUser(UserDTO userDTO){
         User user = new User();
