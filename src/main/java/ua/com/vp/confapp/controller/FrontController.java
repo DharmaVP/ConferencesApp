@@ -34,11 +34,10 @@ public class FrontController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Command command = null;
         CommandResult commandResult = null;
 
         try {
-            command = FACTORY.getCommand(request);
+            Command command = FACTORY.getCommand(request);
             commandResult = command.execute(request, response);
         } catch (CommandException | ServiceException e) {
             LOGGER.error(e.getMessage());

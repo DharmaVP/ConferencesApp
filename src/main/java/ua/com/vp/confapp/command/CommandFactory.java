@@ -4,7 +4,7 @@ package ua.com.vp.confapp.command;
 import jakarta.servlet.http.HttpServletRequest;
 import ua.com.vp.confapp.command.action.*;
 import ua.com.vp.confapp.command.action.guest.*;
-import ua.com.vp.confapp.command.action.user.*;
+import ua.com.vp.confapp.command.action.attendee.*;
 import ua.com.vp.confapp.command.constants.CommandType;
 import ua.com.vp.confapp.exception.CommandException;
 
@@ -81,12 +81,11 @@ public class CommandFactory {
 
     public Command getCommand(HttpServletRequest request) throws CommandException {
         String command = request.getParameter(ACTION);
-        CommandType commandType = CommandType.of(command);
+        CommandType commandType = CommandUtil.getCommandType(command);
 
         if (!commandType.getRequestType().name().equals(request.getMethod())) {
             throw new CommandException("Invalid type of request!");
         }
-
         return commands.get(commandType);
     }
 }

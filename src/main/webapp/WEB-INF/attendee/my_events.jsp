@@ -39,9 +39,9 @@
     </style>
 </head>
 <body>
-<jsp:include page="../../fragments/header.jsp"/>
+<jsp:include page="/WEB-INF/fragments/header.jsp"/>
 <br><br>
-<jsp:include page="/fragments/role_bar.jsp"/>
+<jsp:include page="/WEB-INF/fragments/role_bar.jsp"/>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 
@@ -69,7 +69,7 @@
 </div>
 
 
-<jsp:include page="../../fragments/footer.jsp"/>
+<jsp:include page="/WEB-INF/fragments/footer.jsp"/>
 
 </body>
 </html>

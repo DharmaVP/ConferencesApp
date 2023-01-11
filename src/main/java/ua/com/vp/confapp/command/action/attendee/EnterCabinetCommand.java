@@ -1,4 +1,4 @@
-package ua.com.vp.confapp.command.action.user;
+package ua.com.vp.confapp.command.action.attendee;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

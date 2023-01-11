@@ -1,47 +1,76 @@
 package ua.com.vp.confapp.filters;
 
+import ua.com.vp.confapp.command.constants.CommandType;
+
 import java.util.*;
+
+import static ua.com.vp.confapp.command.constants.CommandType.*;
+import static ua.com.vp.confapp.command.constants.Parameters.*;
 
 public class SecurityConfig {
 
-    public static final String ROLE_GUEST = "guest";
-    public static final String ROLE_ATTENDEE = "attendee";
-    public static final String ROLE_SPEAKER = "speaker";
-    public static final String ROLE_MODERATOR = "moderator";
-    public static final String ROLE_ADMIN = "admin";
+    private static final Map<String, EnumSet<CommandType>> mapConfig = new HashMap<>();
+   // private static final EnumSet<CommandType> guestCommands;
+    private static final EnumSet<CommandType> attendeeCommands;
+    private static final EnumSet<CommandType> speakerCommands;
+    private static final EnumSet<CommandType> moderatorCommands;
+    private static final EnumSet<CommandType> adminCommands;
 
-    // String: Role
-    // List<String>: urlPatterns.
-    private static final Map<String, List<String>> mapConfig = new HashMap<>();
+//    static {
+//        guestCommands = EnumSet.of(
+//                GET_SIGN_IN_PAGE,
+//                SIGN_IN,
+//                GET_SIGN_UP_PAGE,
+//                SIGN_UP,
+//                GET_ALL_EVENTS
+//        );
+//        mapConfig.put(ROLE_GUEST, guestCommands);
+//    }
 
     static {
-        init();
-    }
+        attendeeCommands = EnumSet.of(
+                ENTER_CABINET,
 
-    private static void init() {
-
-        // Configuration of "ATTENDEE".
-        List<String> attendeeCommands = new ArrayList<String>();
-
-        attendeeCommands.add("/userInfo");
-        attendeeCommands.add("/employeeTask");
+                REGISTER_FOR_EVENT
+        );
+    //    attendeeCommands.addAll(guestCommands);
 
         mapConfig.put(ROLE_ATTENDEE, attendeeCommands);
+    }
 
-        // Configuration of "ADMIN".
-        List<String> moderatorCommands = new ArrayList<String>();
+    static {
+        speakerCommands = EnumSet.of(
+                ADD_REPORT,
+                GET_PROFILE
+        );
+        speakerCommands.addAll(attendeeCommands);
 
-        moderatorCommands.add("/userInfo");
-        moderatorCommands.add("/managerTask");
+        mapConfig.put(ROLE_SPEAKER, speakerCommands);
+    }
+
+    static {
+        moderatorCommands = EnumSet.of(
+                ADD_EVENT
+        );
+        moderatorCommands.addAll(speakerCommands);
 
         mapConfig.put(ROLE_MODERATOR, moderatorCommands);
+    }
+
+    static {
+       adminCommands = EnumSet.of(
+                EDIT_USER_PHOTO
+        );
+        adminCommands.addAll(moderatorCommands);
+
+        mapConfig.put(ROLE_ADMIN, adminCommands);
     }
 
     public static Set<String> getAllAppRoles() {
         return mapConfig.keySet();
     }
 
-    public static List<String> getUrlPatternsForRole(String role) {
-        return mapConfig.get(role);
-    }
+    public static Set<CommandType> getCommandsForRole(String role) {
+          return mapConfig.get(role);
+     }
 }

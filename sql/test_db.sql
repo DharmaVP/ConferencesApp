@@ -12,12 +12,14 @@ INSERT INTO users (email, password, prefix, first_name, last_name, cell_phone, j
 VALUES ('viktoria@gmail.com', '123', 'Miss', 'Viktoria', 'Trohimenko', '380502222211', 'Analyst', 'EPAM', 1),
        ('anna@epam.com', '445', 'Ms.', 'Anna', 'Sideltseva', '380507772277', 'Acountant', 'EPAM', 2),
        ('olya@yahoo.com', 'qwerty', 'Prof.', 'Olya', 'Sinchuk', '380388855888', 'Scientist', 'SoftServe', 3),
-       ('natalia@gmail.com', 'asdfg', 'Mrs.', 'Natalia', 'Kovtsuniak', '380672433544', 'Front-end dev', 'N-ix', DEFAULT),
+       ('natalia@gmail.com', 'asdfg', 'Mrs.', 'Natalia', 'Kovtsuniak', '380672433544', 'Front-end dev', 'N-ix',
+        DEFAULT),
        ('olena@andersen.com', 'ggg', 'Sister', 'Olena', 'Olena', '380889233521', 'Sales manager', 'Andersen', DEFAULT),
        ('inna@epam.com', '444', 'Miss', 'Inna', 'Beskisko', '380677777777', 'Unemployed', 'EPAM', DEFAULT),
-       ('vladyslava@global.com', '21', 'Ms.', 'Vladyslava', 'Repalo', '380688888888', 'Assistant', 'GlobalLogic', DEFAULT);
+       ('vladyslava@global.com', '21', 'Ms.', 'Vladyslava', 'Repalo', '380688888888', 'Assistant', 'GlobalLogic',
+        DEFAULT);
 
-INSERT INTO event_address (place_id , building , floor , street_number, street_name , city , postal_code , country)
+INSERT INTO event_address (place_id, building, floor, street_number, street_name, city, postal_code, country)
 VALUES (DEFAULT, 'Hilton', 2, '109f', 'Shevshenko St.', 'Kyiv', 12345, 'Ukraine'),
        (DEFAULT, 'Hayatt', 5, '21', 'Volodymyrska St.', 'Kyiv', 33333, 'Ukraine'),
        (DEFAULT, 'Parkovy CEC', 3, '19', 'Parkova Av.', 'Kyiv', 77777, 'Ukraine');
@@ -25,7 +27,7 @@ VALUES (DEFAULT, 'Hilton', 2, '109f', 'Shevshenko St.', 'Kyiv', 12345, 'Ukraine'
 
 INSERT INTO event (event_id, name, description, event_date, visitors, place_id)
 VALUES (DEFAULT, 'Java 8', 'talk about Stream API, Lambdas, Optional', '2022-12-25 11:45:00', DEFAULT, 1),
-       (DEFAULT, 'Design Patterns', 'Singleton - pattern or antipattern', '2023-01-15 12:00:00', DEFAULT , 1),
+       (DEFAULT, 'Design Patterns', 'Singleton - pattern or antipattern', '2023-01-15 12:00:00', DEFAULT, 1),
        (DEFAULT, 'Clean Code', 'Legacy code, what to do', '2023-01-21 16:30:00', DEFAULT, 2),
        (DEFAULT, 'Hibernate', 'Forget about JDBC', '2023-01-23 14:25:00', DEFAULT, 3),
        (DEFAULT, 'Spring', 'No Servlets!', '2022-12-21 18:00:00', DEFAULT, 3);
@@ -41,11 +43,11 @@ VALUES (DEFAULT, 'StreamAPI', 'From OOP to functional', 1, NULL, DEFAULT),
        (DEFAULT, 'Builder', 'How to build pizza with builder', 2, NULL, DEFAULT);
 
 -- Errors because of non-unique raws due to unique composite keys --
-INSERT INTO event_address (place_id , building , floor , street_number, street_name , city , postal_code , country)
+INSERT INTO event_address (place_id, building, floor, street_number, street_name, city, postal_code, country)
 VALUES (DEFAULT, 'Hilton', 2, '109f', 'Shevshenko St.', 'Kyiv', 12345, 'Ukraine');
 
 INSERT INTO event (event_id, name, description, event_date, visitors, place_id)
-VALUES (DEFAULT, 'Design Patterns', 'Singletonvdv - pattern or antipattern', '2023-01-15 12:00:00', DEFAULT , 1);
+VALUES (DEFAULT, 'Design Patterns', 'Singletonvdv - pattern or antipattern', '2023-01-15 12:00:00', DEFAULT, 1);
 
 INSERT INTO report (report_id, topic, outline, event_id, user_id, accepted)
 VALUES (DEFAULT, 'StreamAPI', 'From OOPdd to functional', 1, NULL, DEFAULT);
@@ -60,4 +62,17 @@ VALUES (1, 1, 1),
        (5, 1, 1),
        (5, 2, 1),
        (2, 1, 0);
+
+
+INSERT INTO event (event_id, name, description, event_date, visitors, place_id)
+VALUES (DEFAULT, 'Loyalty Programs', 'Main trends of 2023', '2022-01-25 11:45:00', DEFAULT, 1),
+       (DEFAULT, 'Fashion trends', 'Whats new', '2023-02-15 12:00:00', DEFAULT, 1),
+       (DEFAULT, 'The best marketing ads of 2022', 'We will watch the best ads', '2023-03-21 16:30:00',
+        DEFAULT, 2),
+       (DEFAULT, 'Fuckup nights', 'Experience of big mistakes', '2023-03-23 14:25:00', DEFAULT, 3),
+       (DEFAULT, 'Craft beer', 'IPAs, APAs, Sours, Guses', '2023-03-21 18:00:00', DEFAULT, 3),
+       (DEFAULT, 'Drink wine', 'Lets drink', '2023-03-24 18:00:00', DEFAULT, 3),
+       (DEFAULT, 'Retailers: how to achieve sales KPI', 'Planning and procrastinating', '2023-03-25 18:00:00', DEFAULT, 3),
+       (DEFAULT, 'The union of cats', 'Meowwww!', '2023-03-26 18:00:00', DEFAULT, 3);
+
 

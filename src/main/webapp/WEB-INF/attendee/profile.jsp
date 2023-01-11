@@ -38,9 +38,9 @@
     </style>
 </head>
 <body>
-<jsp:include page="../../fragments/header.jsp"/>
+<jsp:include page="/WEB-INF/fragments/header.jsp"/>
 <br><br>
-<jsp:include page="/fragments/role_bar.jsp"/>
+<jsp:include page="/WEB-INF/fragments/role_bar.jsp"/>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 
@@ -71,18 +71,18 @@
 
                     <select class="w3-select w3-border w3-hover-light-gray" name="prefix">
                         <option value="${fn:escapeXml(user.prefix)}" selected>${fn:escapeXml(user.prefix)}</option>
-                        <option value="MR">Mr.</option>
-                        <option value="MRS">Mrs.</option>
-                        <option value="MS">Ms.</option>
-                        <option value="MISS">Miss</option>
-                        <option value="DR">Dr.</option>
-                        <option value="PROF">Prof.</option>
-                        <option value="SIR">Sir</option>
-                        <option value="LADY">Lady</option>
-                        <option value="LORD">Lord</option>
-                        <option value="FATHER">Father</option>
-                        <option value="SISTER">Sister</option>
-                        <option value="REV">Rev.</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Prof.">Prof.</option>
+                        <option value="Sir">Sir</option>
+                        <option value="Lady">Lady</option>
+                        <option value="Lord">Lord</option>
+                        <option value="Father">Father</option>
+                        <option value="Sister">Sister</option>
+                        <option value="Rev.">Rev.</option>
                     </select>
                 </div>
 
@@ -95,27 +95,27 @@
                 <div class="w3-margin-bottom">
                     <label><b>Last Name:</b></label>
                     <input class="w3-input w3-border w3-hover-light-gray" type="text" placeholder="Enter Your Last Name"
-                           name="last_name" value="${fn:escapeXml(param.lastName)}"/>
+                           name="last_name" value="${fn:escapeXml(user.lastName)}"/>
                 </div>
 
                 <div class="w3-margin-bottom">
                     <label><b>Cell phone:</b></label>
-                    <input class="w3-input w3-border w3-hover-light-gray" type="text" placeholder="+380(12)345-67-89" pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
-                           name="cell_phone" value="${fn:escapeXml(param.phoneNumber)}"/>
+                    <input class="w3-input w3-border w3-hover-light-gray" type="tel" placeholder="+380(12)345-67-89" pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
+                           name="cell_phone" value="+${fn:escapeXml(user.phoneNumber)}"/>
                 </div>
 
 
                 <div class="w3-margin-bottom">
                     <label><b>Job Title:</b></label>
                     <input class="w3-input w3-border w3-hover-light-gray" type="text" placeholder="e.g Student, CFO, HR, etc."
-                           name="job_title" value="${fn:escapeXml(param.jobTitle)}"/>
+                           name="job_title" value="${fn:escapeXml(user.jobTitle)}"/>
                 </div>
 
 
                 <div class="w3-margin-bottom">
                     <label><b>Organisation:</b></label>
                     <input class="w3-input w3-border w3-hover-light-gray" type="text" placeholder="Enter Your Company or University"
-                           name="organisation" value="${fn:escapeXml(param.organisation)}"/>
+                           name="organisation" value="${fn:escapeXml(user.organisation)}"/>
                 </div>
 
             <button class="w3-button  w3-green w3-section w3-padding" type="submit">Update</button>
@@ -132,7 +132,7 @@
 </div>
 
 
-<jsp:include page="../../fragments/footer.jsp"/>
+<jsp:include page="/WEB-INF/fragments/footer.jsp"/>
 
 </body>
 </html>

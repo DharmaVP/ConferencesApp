@@ -15,10 +15,10 @@
 <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
         <a href="${pageContext.request.contextPath}/index.jsp" class="w3-bar-item w3-button w3-hover-white"><img src="${pageContext.request.contextPath}/images/logo2.png" alt="logo"
-                                                                                   style="width:90%;height:90%;"/></a>
+                                                                                                                 style="width:90%;height:90%;"/></a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small w3-hide-medium w3-margin">
-            <a href="controller?action=all_events" class="w3-bar-item w3-button w3-hover-pink"> ${events}</a>
+            <a href="controller?action=get_all_events" class="w3-bar-item w3-button w3-hover-pink"> ${events}</a>
             <a href="${pageContext.request.contextPath}/index.jsp#about" class="w3-bar-item w3-button w3-hover-pink"> ${about}</a>
             <a href="${pageContext.request.contextPath}/index.jsp#contact" class="w3-bar-item w3-button w3-hover-pink"><i
                     class="fa fa-envelope"></i> ${contact}</a>

@@ -56,7 +56,7 @@
     </script>
 </head>
 <body>
-<jsp:include page="../../fragments/header.jsp"></jsp:include>
+<jsp:include page="../fragments/header.jsp"></jsp:include>
 
 <div class="w3-container w3-margin-top" style="padding:128px 16px" id="home">
     <form class="w3-container w3-card-4 w3-auto" style="max-width:400px" action="controller?action=sign-up"
@@ -111,7 +111,7 @@
     <%--    <c:remove var="invalid_email" scope="session"/>--%>
     <%--    <c:remove var="error" scope="session"/>--%>
 
-<jsp:include page="../../fragments/footer.jsp"/>
+<jsp:include page="../fragments/footer.jsp"/>
 </body>
 </html>
 

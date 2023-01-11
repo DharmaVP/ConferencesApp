@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        <jsp:include page="../../css/w3style.css"/>
+        <%@ include file="../../css/w3style.css" %>
         body, h1, h2, h3, h4, h5, h6 {
             font-family: "Raleway", sans-serif
         }
@@ -39,9 +39,10 @@
     </style>
 </head>
 <body>
-<jsp:include page="../../fragments/header.jsp"/>
+<jsp:include page="/WEB-INF/fragments/header.jsp"/>
 <br><br>
-<jsp:include page="/fragments/role_bar.jsp"/>
+<jsp:include page="/WEB-INF/fragments/role_bar.jsp"/>
+
 
 <!-- Overlay effect when opening sidebar on small screens -->
 
@@ -75,12 +76,10 @@
     </div>
 
 
-
-
-
 </div>
 
-<jsp:include page="../../fragments/footer.jsp"/>
+<%@ include file="/WEB-INF/fragments/footer.jsp" %>
+<%--<jsp:include page="../../fragments/footer.jsp"/>--%>
 
 </body>
 </html>

@@ -51,7 +51,7 @@
     </script>
 </head>
 <body>
-<jsp:include page="../../fragments/header.jsp"></jsp:include>
+<jsp:include page="../fragments/header.jsp"></jsp:include>
 
 
 <div class="w3-container w3-margin-top" style="padding:128px 16px" id="home">
@@ -89,6 +89,11 @@
                     <p>${errors.error}</p>
                 </div>
             </c:if>
+            <c:if test="${not empty error}">
+                <div class="w3-panel w3-pale-red w3-leftbar w3-border-red">
+                    <p>${error}</p>
+                </div>
+            </c:if>
             <div>
                 <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
                 <span class="w3-right w3-hide-small w3-margin-top">Forgot <a href="#">password?</a></span>
@@ -96,7 +101,7 @@
         </div>
     </form>
 </div>
-<jsp:include page="../../fragments/footer.jsp"/>
+<jsp:include page="../fragments/footer.jsp"/>
 </body>
 </html>
 

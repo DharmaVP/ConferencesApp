@@ -1,4 +1,4 @@
-package ua.com.vp.confapp.command.action.user;
+package ua.com.vp.confapp.command.action.attendee;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -28,9 +28,21 @@ public class EditUserCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
 
+        String prefix = request.getParameter("prefix");
         String firstName = request.getParameter("first_name");
+        String lastName = request.getParameter("last_name");
+        String phoneNumber = preparePhoneNumber(request.getParameter("cell_phone"));
+        String jobTitle = request.getParameter("job_title");
+        String organisation = request.getParameter("organisation");
+
+
         UserDTO userDTO = (UserDTO) request.getSession().getAttribute(SESSION_USER);
+        userDTO.setPrefix(prefix);
         userDTO.setFirstName(firstName);
+        userDTO.setLastName(lastName);
+        userDTO.setPhoneNumber(phoneNumber);
+        userDTO.setJobTitle(jobTitle);
+        userDTO.setOrganisation(organisation);
 
 
         String page = CommandUtil.getCommandToRedirect(CommandType.GET_PROFILE);
@@ -42,5 +54,12 @@ public class EditUserCommand implements Command {
             return new CommandResult(PROFILE);
         }
         return new CommandResult(page, true);
+    }
+
+    private String preparePhoneNumber(String cellPhone) {
+        if (cellPhone != null){
+            cellPhone = cellPhone.replaceAll("[^0-9.]", "");
+        }
+        return cellPhone;
     }
 }

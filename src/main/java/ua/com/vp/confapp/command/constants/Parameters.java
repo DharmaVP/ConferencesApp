@@ -17,6 +17,12 @@ public interface Parameters {
     String USER_ID = "user.id";
     String EVENT_ID = "event.id";
 
+    String ROLE_GUEST = "guest";
+    String ROLE_ATTENDEE = "attendee";
+   String ROLE_SPEAKER = "speaker";
+    String ROLE_MODERATOR = "moderator";
+    String ROLE_ADMIN = "admin";
+
     //Values
     String SUCCEED_REGISTER = "succeed.registered";
     String FINISH_REGISTRATION = "finish.registration";

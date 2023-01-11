@@ -21,7 +21,7 @@ import java.security.Principal;
 public class UserRoleRequestWrapper extends HttpServletRequestWrapper {
 
     private String user;
-    private String role = null;
+    private String role;
     private HttpServletRequest realRequest;
 
     public UserRoleRequestWrapper(String user, String role, HttpServletRequest request) {
@@ -32,11 +32,11 @@ public class UserRoleRequestWrapper extends HttpServletRequestWrapper {
     }
 
     @Override
-    public boolean isUserInRole(String role) {
-        if (role == null) {
-            return this.realRequest.isUserInRole(role);
+    public boolean isUserInRole(String currentRole) {
+        if (currentRole == null) {
+            return this.realRequest.isUserInRole(currentRole);
         }
-        return role.contains(role);
+        return role.equals(currentRole);
     }
 
     @Override

@@ -48,7 +48,7 @@
 </head>
 <body>
 
-<jsp:include page="fragments/header.jsp"/>
+<jsp:include page="WEB-INF/fragments/header.jsp"/>
 
 
 <!-- Header with full-height image -->
@@ -115,7 +115,7 @@
     </div>
 </div>
 
-<jsp:include page="fragments/footer.jsp"/>
+<jsp:include page="WEB-INF/fragments/footer.jsp"/>
 
 <script>
     // Modal Image Gallery

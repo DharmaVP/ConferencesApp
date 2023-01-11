@@ -54,6 +54,7 @@ public enum CommandType {
 
     ADD_REPORT("add_theme", POST);
 
+
 //    ADD_PERMISSION("add_permission", POST),
 //
 //    ADD_ROLE_PAGE("add_role_page", GET),
@@ -91,15 +92,5 @@ public enum CommandType {
         return requestType;
     }
 
-    /**
-     * Of command type.
-     *
-     * @param command the command
-     * @return the command type
-     */
-    public static CommandType of(String command) throws CommandException {
-        return Stream.of(CommandType.values())
-                .filter(c -> c.commandName.equalsIgnoreCase(command))
-                .findFirst().orElseThrow(CommandException::new);
-    }
+
 }
