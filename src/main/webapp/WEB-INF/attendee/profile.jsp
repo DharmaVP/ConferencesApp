@@ -40,7 +40,7 @@
 <body>
 <jsp:include page="/WEB-INF/fragments/header.jsp"/>
 <br><br>
-<jsp:include page="/WEB-INF/fragments/role_bar.jsp"/>
+<jsp:include page="/WEB-INF/fragments/navbar.jsp"/>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 

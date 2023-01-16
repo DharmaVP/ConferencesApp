@@ -4,6 +4,7 @@ import ua.com.vp.confapp.dao.RoleDAO;
 import ua.com.vp.confapp.entities.User;
 import ua.com.vp.confapp.exception.DAOException;
 import ua.com.vp.confapp.utils.DAOUtil;
+import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,7 +80,7 @@ public class JDBCRoleDAO extends JDBCEntityDAO implements RoleDAO {
     }
 
     @Override
-    public List<User.Role> getAll() throws DAOException  {
+    public List<User.Role> getAll(QueryBuilder queryBuilder) throws DAOException  {
         List<User.Role> roles = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_ROLES);
              ResultSet resultSet = statement.executeQuery()) {
@@ -90,6 +91,11 @@ public class JDBCRoleDAO extends JDBCEntityDAO implements RoleDAO {
             throw new DAOException(e);
         }
         return roles;
+    }
+
+    @Override
+    public int getNoOfRecords(QueryBuilder queryBuilder) throws DAOException {
+        return 0;
     }
 
     private User.Role map(ResultSet resultSet) throws SQLException {

@@ -59,6 +59,7 @@
           method="POST">
         <div class="w3-section">
             <div class="w3-margin-bottom">
+                <input type="hidden" name="redirectId" value="${param.redirectId}" />
                 <label><b>${email}:</b></label>
                 <input class="w3-input w3-border w3-hover-light-gray" type="text"
                        placeholder="Enter Your Email"

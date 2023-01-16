@@ -5,6 +5,7 @@ import ua.com.vp.confapp.dao.UserDAO;
 import ua.com.vp.confapp.exception.DAOException;
 import ua.com.vp.confapp.entities.User;
 import ua.com.vp.confapp.utils.DAOUtil;
+import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ public class JDBCUserDAO extends JDBCEntityDAO implements UserDAO {
 
 
     @Override
-    public List<User> getAll() throws DAOException {
+    public List<User> getAll(QueryBuilder queryBuilder) throws DAOException {
         List<User> users = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_USERS);
              ResultSet resultSet = statement.executeQuery()) {
@@ -93,6 +94,11 @@ public class JDBCUserDAO extends JDBCEntityDAO implements UserDAO {
             throw new DAOException(e);
         }
         return users;
+    }
+
+    @Override
+    public int getNoOfRecords(QueryBuilder queryBuilder) throws DAOException {
+        return 0;
     }
 
 

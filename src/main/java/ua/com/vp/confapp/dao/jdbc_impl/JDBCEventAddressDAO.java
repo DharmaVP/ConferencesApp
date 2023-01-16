@@ -4,6 +4,7 @@ import ua.com.vp.confapp.dao.EventAddressDAO;
 import ua.com.vp.confapp.entities.Event;
 import ua.com.vp.confapp.exception.DAOException;
 import ua.com.vp.confapp.utils.DAOUtil;
+import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,7 +81,7 @@ public class JDBCEventAddressDAO extends JDBCEntityDAO implements EventAddressDA
     }
 
     @Override
-    public List<Event.EventAddress> getAll() throws DAOException {
+    public List<Event.EventAddress> getAll(QueryBuilder queryBuilder) throws DAOException {
         List<Event.EventAddress> addresses = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_ADDRESS);
              ResultSet resultSet = statement.executeQuery()) {
@@ -91,6 +92,11 @@ public class JDBCEventAddressDAO extends JDBCEntityDAO implements EventAddressDA
             throw new DAOException(e);
         }
         return addresses;
+    }
+
+    @Override
+    public int getNoOfRecords(QueryBuilder queryBuilder) throws DAOException {
+        return 0;
     }
 
     @Override

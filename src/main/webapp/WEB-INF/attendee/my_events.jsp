@@ -41,7 +41,7 @@
 <body>
 <jsp:include page="/WEB-INF/fragments/header.jsp"/>
 <br><br>
-<jsp:include page="/WEB-INF/fragments/role_bar.jsp"/>
+<jsp:include page="/WEB-INF/fragments/navbar.jsp"/>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 
@@ -52,6 +52,7 @@
             <h1 class="w3-text-teal">Your events </h1>
             <button>Past Events</button> <button>Future Events</button>
             <p>
+
             <form action="/controller">
                 <input hidden/>
                 <label>Prefix</label>
@@ -67,6 +68,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 
 <jsp:include page="/WEB-INF/fragments/footer.jsp"/>

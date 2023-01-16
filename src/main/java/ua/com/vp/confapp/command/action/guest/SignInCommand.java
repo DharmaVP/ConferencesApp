@@ -12,6 +12,7 @@ import ua.com.vp.confapp.command.constants.CommandType;
 import ua.com.vp.confapp.dto.UserDTO;
 import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.exception.ValidationException;
+import ua.com.vp.confapp.filters.AppUtils;
 import ua.com.vp.confapp.services.ServiceFactory;
 import ua.com.vp.confapp.services.UserService;
 import ua.com.vp.confapp.utils.Validator;
@@ -54,6 +55,15 @@ public class SignInCommand implements Command {
             messages.put("error", e.getMessage());
             page = SIGN_IN_PAGE;
             return new CommandResult(page);
+        }
+        int redirectId = -1;
+        try {
+            redirectId = Integer.parseInt(request.getParameter("redirectId"));
+        } catch (Exception e) {
+        }
+        String requestUri = AppUtils.getRedirectAfterLoginUrl(request.getSession(), redirectId);
+        if (requestUri != null) {
+            return new CommandResult(requestUri, true);
         }
         return new CommandResult(page, true);
     }

@@ -5,6 +5,7 @@ import ua.com.vp.confapp.dao.EventDAO;
 import ua.com.vp.confapp.exception.DAOException;
 import ua.com.vp.confapp.entities.Event;
 import ua.com.vp.confapp.utils.DAOUtil;
+import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,9 +81,10 @@ public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
     }
 
     @Override
-    public List<Event> getAll() throws DAOException {
+    public List<Event> getAll(QueryBuilder queryBuilder) throws DAOException {
         List<Event> events = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_EVENTS);
+        String conditionQuery = queryBuilder.getQuery();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_EVENTS + conditionQuery);
              ResultSet resultSet = statement.executeQuery();) {
             while (resultSet.next()) {
                 events.add(map(resultSet));
@@ -91,6 +93,21 @@ public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
             throw new DAOException(e);
         }
         return events;
+    }
+
+    @Override
+    public int getNoOfRecords(QueryBuilder queryBuilder) throws DAOException {
+        int eventNumber = 0;
+        String conditionQuery = queryBuilder.getRecordQuery();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_COUNT_EVENTS + conditionQuery);
+             ResultSet resultSet = statement.executeQuery();) {
+            if (resultSet.next()) {
+                eventNumber = resultSet.getInt(COUNT);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return eventNumber;
     }
 
     @Override

@@ -6,6 +6,7 @@ import ua.com.vp.confapp.entities.Event;
 import ua.com.vp.confapp.exception.DAOException;
 import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.services.EventService;
+import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,13 +43,13 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<EventDTO> getAll() throws ServiceException {
+    public List<EventDTO> getAll(QueryBuilder queryBuilder) throws ServiceException {
         List<EventDTO> eventsDTO = new ArrayList<>();
         List<Event> events;
 
         try {
             transaction.beginNoTransaction(eventDAO);
-            events = eventDAO.getAll();
+            events = eventDAO.getAll(queryBuilder);
         } catch (DAOException e) {
             throw new ServiceException(e);
         } finally {
@@ -68,6 +69,20 @@ public class EventServiceImpl implements EventService {
     @Override
     public boolean delete(EventDTO entity) throws ServiceException {
         return false;
+    }
+
+    @Override
+    public int getNumberOfRecords(QueryBuilder queryBuilder) throws ServiceException {
+        int numberOfrecords = 0;
+        try {
+            transaction.beginNoTransaction(eventDAO);
+            numberOfrecords = eventDAO.getNoOfRecords(queryBuilder);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        } finally {
+            transaction.endNoTransaction();
+        }
+        return numberOfrecords;
     }
 
 

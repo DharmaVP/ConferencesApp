@@ -5,6 +5,7 @@ import ua.com.vp.confapp.dao.ReportDAO;
 import ua.com.vp.confapp.dto.ReportDTO;
 import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.services.ReportService;
+import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.util.List;
 
@@ -24,9 +25,10 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<ReportDTO> getAll() throws ServiceException {
+    public List<ReportDTO> getAll(QueryBuilder queryBuilder) throws ServiceException {
         return null;
     }
+
 
     @Override
     public boolean update(ReportDTO entity) throws ServiceException {
@@ -36,5 +38,10 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public boolean delete(ReportDTO entity) throws ServiceException {
         return false;
+    }
+
+    @Override
+    public int getNumberOfRecords(QueryBuilder queryBuilder) throws ServiceException {
+        return 0;
     }
 }

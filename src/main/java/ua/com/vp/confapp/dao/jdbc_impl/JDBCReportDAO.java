@@ -7,6 +7,7 @@ import ua.com.vp.confapp.entities.Event;
 import ua.com.vp.confapp.entities.Report;
 import ua.com.vp.confapp.entities.User;
 import ua.com.vp.confapp.utils.DAOUtil;
+import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -91,7 +92,7 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
     }
 
     @Override
-    public List<Report> getAll() throws DAOException {
+    public List<Report> getAll(QueryBuilder queryBuilder) throws DAOException {
         List<Report> reports = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_REPORTS);
              ResultSet resultSet = statement.executeQuery();) {
@@ -102,6 +103,11 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
             throw new DAOException(e);
         }
         return reports;
+    }
+
+    @Override
+    public int getNoOfRecords(QueryBuilder queryBuilder) throws DAOException {
+        return 0;
     }
 
     private Object[] getReportParams(Report report) {

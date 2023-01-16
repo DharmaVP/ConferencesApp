@@ -25,7 +25,7 @@ public class CommandFactory {
         commands.put(SIGN_OUT, new SignOutCommand());
         commands.put(GET_SIGN_IN_PAGE, new SignInPageCommand());
         commands.put(GET_SIGN_UP_PAGE, new SignUpPageCommand());
-        commands.put(GET_ALL_EVENTS, new AllEventsCommand());
+        commands.put(GET_ALL_EVENTS, new ViewAllEventsCommand());
         commands.put(REGISTER_FOR_EVENT, new RegisterForEventCommand());
         commands.put(ENTER_CABINET, new EnterCabinetCommand());
         commands.put(GET_PROFILE, new GetProfileCommand());

@@ -17,6 +17,9 @@ public final class EventQueries {
     public static final String SQL_DELETE_EVENT =
             "DELETE FROM event WHERE id = ?";
 
+    public static final String SQL_COUNT_EVENTS =
+            "SELECT COUNT(*) FROM event";
+
     public static final String SQL_SET_VISITORS =
             "UPDATE event SET visitors = ? WHERE event_id = ?";
 

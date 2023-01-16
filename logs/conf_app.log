@@ -1,4 +1,192 @@
-2023-01-11 13:14:41 [http-nio-8080-exec-37] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-11 13:32:40 [http-nio-8080-exec-44] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-11 13:32:49 [http-nio-8080-exec-37] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-11 15:01:45 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 15:26:32 [http-nio-8080-exec-12] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 15:27:05 [http-nio-8080-exec-20] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:49:41 [http-nio-8080-exec-34] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:49:49 [http-nio-8080-exec-37] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:50:51 [http-nio-8080-exec-32] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:50:56 [http-nio-8080-exec-35] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:51:45 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:51:49 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:51:52 [http-nio-8080-exec-8] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:51:55 [http-nio-8080-exec-10] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 18:56:41 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:04:35 [http-nio-8080-exec-8] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:04:35 [http-nio-8080-exec-7] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:04:35 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:04:35 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:05:05 [http-nio-8080-exec-10] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:05:39 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
+2023-01-16 19:05:42 [http-nio-8080-exec-7] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
+2023-01-16 19:10:08 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:10:12 [http-nio-8080-exec-2] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:10:33 [http-nio-8080-exec-1] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:21:21 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:21:45 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:28:44 [http-nio-8080-exec-3] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:28:50 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:31:38 [http-nio-8080-exec-3] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:36:05 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:36:05 [http-nio-8080-exec-3] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:37:00 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:37:23 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:37:27 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:38:43 [http-nio-8080-exec-2] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:38:46 [http-nio-8080-exec-3] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:38:51 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:38:55 [http-nio-8080-exec-8] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:38:58 [http-nio-8080-exec-2] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:40:07 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:40:09 [http-nio-8080-exec-7] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:41:29 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:42:55 [http-nio-8080-exec-8] ERROR vp.confapp.dao.jdbc_impl.JDBCTransaction -  Error closing connection
+java.sql.SQLException: Connection is closed
+	at com.zaxxer.hikari.pool.ProxyConnection$ClosedConnection.lambda$getClosedConnection$0(ProxyConnection.java:502) ~[HikariCP-5.0.1.jar:?]
+	at jdk.proxy4.$Proxy23.clearWarnings(Unknown Source) ~[?:?]
+	at com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257) ~[HikariCP-5.0.1.jar:?]
+	at ua.com.vp.confapp.dao.jdbc_impl.JDBCTransaction.endNoTransaction(JDBCTransaction.java:55) ~[classes/:?]
+	at ua.com.vp.confapp.services.impl.EventServiceImpl.getAll(EventServiceImpl.java:56) ~[classes/:?]
+	at ua.com.vp.confapp.command.action.guest.ViewAllEventsCommand.execute(ViewAllEventsCommand.java:51) ~[classes/:?]
+	at ua.com.vp.confapp.controller.FrontController.processRequest(FrontController.java:41) ~[classes/:?]
+	at ua.com.vp.confapp.controller.FrontController.doGet(FrontController.java:28) ~[classes/:?]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[servlet-api.jar:6.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[servlet-api.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-websocket.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at ua.com.vp.confapp.filters.SecurityFilter.doFilter(SecurityFilter.java:88) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at ua.com.vp.confapp.filters.EncodingFilter.doFilter(EncodingFilter.java:26) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[catalina.jar:10.1.2]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-util.jar:10.1.2]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-util.jar:10.1.2]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-util.jar:10.1.2]
+	at java.lang.Thread.run(Thread.java:833) ~[?:?]
+2023-01-16 19:42:59 [http-nio-8080-exec-9] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:43:05 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:43:13 [http-nio-8080-exec-3] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:45:59 [http-nio-8080-exec-9] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:46:03 [http-nio-8080-exec-1] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:46:06 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:46:12 [http-nio-8080-exec-7] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:46:16 [http-nio-8080-exec-9] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:46:21 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 19:46:28 [http-nio-8080-exec-3] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 21:17:23 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:13:35 [http-nio-8080-exec-4] ERROR vp.confapp.dao.jdbc_impl.JDBCTransaction -  Error closing connection
+java.sql.SQLException: Connection is closed
+	at com.zaxxer.hikari.pool.ProxyConnection$ClosedConnection.lambda$getClosedConnection$0(ProxyConnection.java:502) ~[HikariCP-5.0.1.jar:?]
+	at jdk.proxy4.$Proxy23.clearWarnings(Unknown Source) ~[?:?]
+	at com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257) ~[HikariCP-5.0.1.jar:?]
+	at ua.com.vp.confapp.dao.jdbc_impl.JDBCTransaction.endNoTransaction(JDBCTransaction.java:55) ~[classes/:?]
+	at ua.com.vp.confapp.services.impl.EventServiceImpl.getAll(EventServiceImpl.java:56) ~[classes/:?]
+	at ua.com.vp.confapp.command.action.guest.ViewAllEventsCommand.execute(ViewAllEventsCommand.java:51) ~[classes/:?]
+	at ua.com.vp.confapp.controller.FrontController.processRequest(FrontController.java:41) ~[classes/:?]
+	at ua.com.vp.confapp.controller.FrontController.doGet(FrontController.java:28) ~[classes/:?]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[servlet-api.jar:6.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[servlet-api.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-websocket.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at ua.com.vp.confapp.filters.SecurityFilter.doFilter(SecurityFilter.java:88) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at ua.com.vp.confapp.filters.EncodingFilter.doFilter(EncodingFilter.java:26) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[catalina.jar:10.1.2]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-util.jar:10.1.2]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-util.jar:10.1.2]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-util.jar:10.1.2]
+	at java.lang.Thread.run(Thread.java:833) ~[?:?]
+2023-01-16 22:25:34 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:26:31 [http-nio-8080-exec-9] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:26:34 [http-nio-8080-exec-1] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:26:37 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:26:43 [http-nio-8080-exec-2] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:27:39 [http-nio-8080-exec-10] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:27:45 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:28:54 [http-nio-8080-exec-8] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:28:59 [http-nio-8080-exec-1] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:29:21 [http-nio-8080-exec-2] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:29:23 [http-nio-8080-exec-8] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:29:45 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:31:13 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:31:19 [http-nio-8080-exec-3] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 22:49:52 [http-nio-8080-exec-8] ERROR vp.confapp.dao.jdbc_impl.JDBCTransaction -  Error closing connection
+java.sql.SQLException: Connection is closed
+	at com.zaxxer.hikari.pool.ProxyConnection$ClosedConnection.lambda$getClosedConnection$0(ProxyConnection.java:502) ~[HikariCP-5.0.1.jar:?]
+	at jdk.proxy4.$Proxy23.clearWarnings(Unknown Source) ~[?:?]
+	at com.zaxxer.hikari.pool.ProxyConnection.close(ProxyConnection.java:257) ~[HikariCP-5.0.1.jar:?]
+	at ua.com.vp.confapp.dao.jdbc_impl.JDBCTransaction.endNoTransaction(JDBCTransaction.java:55) ~[classes/:?]
+	at ua.com.vp.confapp.services.impl.EventServiceImpl.getAll(EventServiceImpl.java:56) ~[classes/:?]
+	at ua.com.vp.confapp.command.action.guest.ViewAllEventsCommand.execute(ViewAllEventsCommand.java:51) ~[classes/:?]
+	at ua.com.vp.confapp.controller.FrontController.processRequest(FrontController.java:41) ~[classes/:?]
+	at ua.com.vp.confapp.controller.FrontController.doGet(FrontController.java:28) ~[classes/:?]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[servlet-api.jar:6.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[servlet-api.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-websocket.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at ua.com.vp.confapp.filters.SecurityFilter.doFilter(SecurityFilter.java:88) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at ua.com.vp.confapp.filters.EncodingFilter.doFilter(EncodingFilter.java:26) ~[classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[catalina.jar:10.1.2]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[catalina.jar:10.1.2]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-coyote.jar:10.1.2]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-util.jar:10.1.2]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-util.jar:10.1.2]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-util.jar:10.1.2]
+	at java.lang.Thread.run(Thread.java:833) ~[?:?]
+2023-01-16 23:20:17 [http-nio-8080-exec-7] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 23:20:23 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 23:26:43 [http-nio-8080-exec-12] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 23:26:46 [http-nio-8080-exec-16] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 23:26:51 [http-nio-8080-exec-19] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 23:26:52 [http-nio-8080-exec-14] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 23:27:03 [http-nio-8080-exec-19] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-01-16 23:27:05 [http-nio-8080-exec-14] ERROR com.vp.confapp.controller.FrontController - No such command exist

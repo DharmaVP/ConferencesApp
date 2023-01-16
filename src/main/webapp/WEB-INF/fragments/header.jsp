@@ -18,7 +18,7 @@
                                                                                                                  style="width:90%;height:90%;"/></a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small w3-hide-medium w3-margin">
-            <a href="controller?action=get_all_events" class="w3-bar-item w3-button w3-hover-pink"> ${events}</a>
+            <a href="controller?action=get_all_events&date_type=upcoming" class="w3-bar-item w3-button w3-hover-pink"> ${events}</a>
             <a href="${pageContext.request.contextPath}/index.jsp#about" class="w3-bar-item w3-button w3-hover-pink"> ${about}</a>
             <a href="${pageContext.request.contextPath}/index.jsp#contact" class="w3-bar-item w3-button w3-hover-pink"><i
                     class="fa fa-envelope"></i> ${contact}</a>
@@ -42,7 +42,7 @@
      id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">${close}
         ×</a>
-    <a href="controller?action=all_events" class="w3-bar-item w3-button w3-hover-pink"> ${events}</a>
+    <a href="controller?action=all_events&date_type=upcoming" class="w3-bar-item w3-button w3-hover-pink"> ${events}</a>
     <a href="${pageContext.request.contextPath}/index.jsp#about" onclick="w3_close()" class="w3-bar-item w3-button"> ${about}</a>
     <a href="${pageContext.request.contextPath}/index.jsp#contact" onclick="w3_close()" class="w3-bar-item w3-button"> ${contact}</a>
     <jsp:include page="signin_cabinet.jsp"/>

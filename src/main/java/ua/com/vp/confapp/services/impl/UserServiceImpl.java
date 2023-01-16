@@ -9,6 +9,8 @@ import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.exception.ValidationException;
 import ua.com.vp.confapp.services.UserService;
 import ua.com.vp.confapp.utils.EmailNotifier;
+import ua.com.vp.confapp.utils.querybuilder.EventsQueryBuilder;
+import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -88,7 +90,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> getAll() throws ServiceException {
+    public List<UserDTO> getAll(QueryBuilder queryBuilder) throws ServiceException {
         return null;
     }
 
@@ -120,5 +122,10 @@ public class UserServiceImpl implements UserService {
             transaction.endNoTransaction();
         }
         return true;
+    }
+
+    @Override
+    public int getNumberOfRecords(QueryBuilder queryBuilder) throws ServiceException {
+        return 0;
     }
 }

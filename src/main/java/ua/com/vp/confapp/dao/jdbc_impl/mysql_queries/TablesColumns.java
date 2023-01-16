@@ -38,4 +38,7 @@ public final class TablesColumns {
     public static final String ACCEPTED = "accepted";
     // table: participant
     public static final String SPEAKER = "speaker";
+
+    // functions
+    public static final String COUNT = "COUNT(*)";
 }
