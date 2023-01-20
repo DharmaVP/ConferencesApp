@@ -1,7 +1,11 @@
 package ua.com.vp.confapp.utils;
 
+import org.eclipse.tags.shaded.org.apache.xpath.operations.Number;
+import ua.com.vp.confapp.dto.EventDTO;
 import ua.com.vp.confapp.exception.ValidationException;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import static ua.com.vp.confapp.utils.RegexKeeper.*;
@@ -27,11 +31,31 @@ public final class Validator {
             if (field == null) {
                 throw new ValidationException("Please, enter");
             }
-        };
+        }
     }
 
     private static void validateFormat(String name, String regex, String message) throws ValidationException {
         if (name == null || !name.matches(regex))
             throw new ValidationException(message);
+    }
+
+    public static void validateEventDate(String eventDate) throws ValidationException {
+        LocalDateTime eventDateTime = LocalDateTime.parse(eventDate);
+        if (eventDateTime.isBefore(LocalDateTime.now()))
+            throw new ValidationException("You can't create event in the past");
+    }
+
+    public static void validateDate(EventDTO eventDTO) throws ValidationException {
+        LocalDateTime eventDateTime = eventDTO.getEventDateTime();
+        if (eventDateTime.isBefore(LocalDateTime.now()))
+            throw new ValidationException("You can't register for event in the past");
+    }
+
+    public static void validateIntValue(String fieldToDigit) throws ValidationException {
+        try {
+            Integer.parseInt(fieldToDigit);
+        } catch (NumberFormatException e) {
+            throw new ValidationException("You can't create event in the past");
+        }
     }
 }

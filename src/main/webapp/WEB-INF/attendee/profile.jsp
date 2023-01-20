@@ -3,9 +3,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language"
-       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-       scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="resources"/>
 
@@ -101,7 +98,7 @@
                 <div class="w3-margin-bottom">
                     <label><b>Cell phone:</b></label>
                     <input class="w3-input w3-border w3-hover-light-gray" type="tel" placeholder="+380(12)345-67-89" pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
-                           name="cell_phone" value="+${fn:escapeXml(user.phoneNumber)}"/>
+                           name="cell_phone" value="${fn:escapeXml(user.phoneNumber)}"/>
                 </div>
 
 

@@ -8,7 +8,7 @@ CREATE USER 'admin_db'@'localhost' IDENTIFIED BY 'r%g20_Fl8_1';
 GRANT ALL ON conference_db.* TO 'admin_db'@'localhost';
 
 INSERT INTO users (email, password, prefix, first_name, last_name, cell_phone, job_title, organisation,
-                   role_id)
+                   role_role_id)
 VALUES ('viktoria@gmail.com', '123', 'Miss', 'Viktoria', 'Trohimenko', '380502222211', 'Analyst', 'EPAM', 1),
        ('anna@epam.com', '445', 'Ms.', 'Anna', 'Sideltseva', '380507772277', 'Acountant', 'EPAM', 2),
        ('olya@yahoo.com', 'qwerty', 'Prof.', 'Olya', 'Sinchuk', '380388855888', 'Scientist', 'SoftServe', 3),
@@ -25,7 +25,7 @@ VALUES (DEFAULT, 'Hilton', 2, '109f', 'Shevshenko St.', 'Kyiv', 12345, 'Ukraine'
        (DEFAULT, 'Parkovy CEC', 3, '19', 'Parkova Av.', 'Kyiv', 77777, 'Ukraine');
 
 
-INSERT INTO event (event_id, name, description, event_date, visitors, place_id)
+INSERT INTO event (event_id, name, description, event_date, visitors, place_place_id)
 VALUES (DEFAULT, 'Java 8', 'talk about Stream API, Lambdas, Optional', '2022-12-25 11:45:00', DEFAULT, 1),
        (DEFAULT, 'Design Patterns', 'Singleton - pattern or antipattern', '2023-01-15 12:00:00', DEFAULT, 1),
        (DEFAULT, 'Clean Code', 'Legacy code, what to do', '2023-01-21 16:30:00', DEFAULT, 2),
@@ -33,7 +33,7 @@ VALUES (DEFAULT, 'Java 8', 'talk about Stream API, Lambdas, Optional', '2022-12-
        (DEFAULT, 'Spring', 'No Servlets!', '2022-12-21 18:00:00', DEFAULT, 3);
 
 
-INSERT INTO report (report_id, topic, outline, event_id, user_id, accepted)
+INSERT INTO report (report_id, topic, outline, event_event_id, users_user_id, accepted)
 VALUES (DEFAULT, 'StreamAPI', 'From OOP to functional', 1, NULL, DEFAULT),
        (DEFAULT, 'Lambdas&MethodRef', 'How to use', 1, 3, 1),
        (DEFAULT, 'Optional', 'The problem with Null', 1, NULL, DEFAULT),
@@ -46,10 +46,10 @@ VALUES (DEFAULT, 'StreamAPI', 'From OOP to functional', 1, NULL, DEFAULT),
 INSERT INTO event_address (place_id, building, floor, street_number, street_name, city, postal_code, country)
 VALUES (DEFAULT, 'Hilton', 2, '109f', 'Shevshenko St.', 'Kyiv', 12345, 'Ukraine');
 
-INSERT INTO event (event_id, name, description, event_date, visitors, place_id)
+INSERT INTO event (event_id, name, description, event_date, visitors, place_place_id)
 VALUES (DEFAULT, 'Design Patterns', 'Singletonvdv - pattern or antipattern', '2023-01-15 12:00:00', DEFAULT, 1);
 
-INSERT INTO report (report_id, topic, outline, event_id, user_id, accepted)
+INSERT INTO report (report_id, topic, outline, event_event_id, users_user_id, accepted)
 VALUES (DEFAULT, 'StreamAPI', 'From OOPdd to functional', 1, NULL, DEFAULT);
 
 -- Participants --
@@ -64,7 +64,7 @@ VALUES (1, 1, 1),
        (2, 1, 0);
 
 
-INSERT INTO event (event_id, name, description, event_date, visitors, place_id)
+INSERT INTO event (event_id, name, description, event_date, visitors, place_place_id)
 VALUES (DEFAULT, 'Loyalty Programs', 'Main trends of 2023', '2022-01-25 11:45:00', DEFAULT, 1),
        (DEFAULT, 'Fashion trends', 'Whats new', '2023-02-15 12:00:00', DEFAULT, 1),
        (DEFAULT, 'The best marketing ads of 2022', 'We will watch the best ads', '2023-03-21 16:30:00',

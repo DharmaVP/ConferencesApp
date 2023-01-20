@@ -57,6 +57,23 @@ public class JDBCEventAddressDAO extends JDBCEntityDAO implements EventAddressDA
         return Optional.ofNullable(address);
     }
 
+    @Override
+    public Long findByParams(Event.EventAddress address) throws DAOException {
+        Long addressId = null;
+        Object[] values = DAOUtil.getEventAddressParams(address);
+
+        try (PreparedStatement statement =
+                     DAOUtil.prepareStatement(connection, SQL_FIND_ADDRESS, false, values);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                addressId = resultSet.getLong(PLACE_ID);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return addressId;
+    }
+
 
     @Override
     public boolean update(Event.EventAddress address) throws IllegalArgumentException, DAOException {
@@ -118,7 +135,7 @@ public class JDBCEventAddressDAO extends JDBCEntityDAO implements EventAddressDA
         Event.EventAddress address = new Event.EventAddress();
         address.setId(resultSet.getLong(PLACE_ID));
         address.setBuildingName(resultSet.getString(BUILDING));
-        address.setFloor(resultSet.getShort(FLOOR));
+        address.setFloor(resultSet.getInt(FLOOR));
         address.setStreetNumber(resultSet.getString(STREET_NUMBER));
         address.setStreetName(resultSet.getString(STREET_NAME));
         address.setCity(resultSet.getString(CITY));

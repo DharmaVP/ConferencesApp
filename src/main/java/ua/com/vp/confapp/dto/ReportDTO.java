@@ -20,23 +20,13 @@ public class ReportDTO {
     private String outline;
 
     private Long speakerId;
-    private User.Prefix prefix;
+    private String prefix;
     private String firstName;
     private String lastName;
     private String jobTitle;
     private String organisation;
 
     private Long eventId;
-    private String name;
-    private LocalDateTime eventDate;
-    private Long placeId;
-    private String building;
-    private Short floor;
-    private String streetNumber;
-    private String streetName;
-    private String city;
-    private Integer postalCode;
-    private String country;
 
     private Boolean accepted;
 }

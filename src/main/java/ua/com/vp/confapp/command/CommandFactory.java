@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import ua.com.vp.confapp.command.action.*;
 import ua.com.vp.confapp.command.action.guest.*;
 import ua.com.vp.confapp.command.action.attendee.*;
+import ua.com.vp.confapp.command.action.moderator.*;
 import ua.com.vp.confapp.command.constants.CommandType;
 import ua.com.vp.confapp.exception.CommandException;
 
@@ -31,24 +32,31 @@ public class CommandFactory {
         commands.put(GET_PROFILE, new GetProfileCommand());
         commands.put(EDIT_USER, new EditUserCommand());
 
-//        commands.put(ADD_EVENT, new AddEventCommand());
+        commands.put(ADD_EVENT, new AddEventCommand());
+        commands.put(VIEW_EVENT, new ViewEventCommand());
+        commands.put(CANCEL_REGISTRATION, new CancelRegistrationCommand());
+        commands.put(USER_EVENTS, new ViewUserEventsCommand());
+        commands.put(GET_ALL_USERS, new GetAllUsersCommand());
+
+        commands.put(VIEW_USER, new ViewUserCommand());
+        commands.put(CHANGE_ROLE, new ChangeRoleCommand());
+        commands.put(MANAGE_EVENTS, new ManageEventsCommand());
+        commands.put(EDIT_EVENT_PAGE, new EditEventPageCommand());
+        commands.put(ADD_EVENT_PAGE, new AddEventPageCommand());
+
 //        commands.put(REMOVE_EVENT, new RemoveEventCommand());
 //        commands.put(EDIT_EVENT, new EditEventCommand());
-//        commands.put(EDIT_EVENT_PAGE, new EditEventPageCommand());
+
 //        commands.put(PROFILE, new ProfileCommand());
 
 //        commands.put(EDIT_USER_INFO, new EditUserInfoCommand());
 //        commands.put(EDIT_USER_PHOTO, new EditUserPhotoCommand());
 //        commands.put(DELETE_USER, new DeleteUserCommand());
 
-//        commands.put(LEAVE_EVENT, new LeaveEventCommand());
-//        commands.put(USER_EVENTS, new UserEventsCommand());
+
 //        commands.put(HOME_PAGE, new HomePageCommand());
-//        commands.put(CHANGE_LANGUAGE, new ChangeLanguageCommand());
-//        commands.put(LOGIN_PAGE, new LoginPageCommand());
-//        commands.put(REGISTER_PAGE, new RegisterPageCommand());
-//        commands.put(ADD_EVENT_PAGE, new AddEventPageCommand());
-//        commands.put(ALL_USERS, new AllUsersCommand());
+
+
 //        commands.put(START_PAGE, new HomePageCommand());
 
 //        commands.put(ADD_ROLE, new AddRoleCommand());

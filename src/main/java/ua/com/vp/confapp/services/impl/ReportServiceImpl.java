@@ -1,26 +1,31 @@
 package ua.com.vp.confapp.services.impl;
 
-import ua.com.vp.confapp.dao.DAOFactory;
-import ua.com.vp.confapp.dao.ReportDAO;
+import ua.com.vp.confapp.dao.*;
 import ua.com.vp.confapp.dto.ReportDTO;
+import ua.com.vp.confapp.entities.Report;
+import ua.com.vp.confapp.exception.DAOException;
 import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.services.ReportService;
 import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ReportServiceImpl implements ReportService {
-    DAOFactory daoFactory;
+import static ua.com.vp.confapp.utils.MapperDTO.convertToReportDTO;
 
-    public ReportServiceImpl(DAOFactory daoFactory) {
-        this.daoFactory = daoFactory;
+public class ReportServiceImpl implements ReportService {
+    private final Transaction<DAO> transaction;
+    private final ReportDAO reportDAO;
+
+
+    public ReportServiceImpl(Transaction<DAO> transaction, ReportDAO reportDAO) {
+        this.transaction = transaction;
+        this.reportDAO = reportDAO;
     }
 
 
-
-
     @Override
-    public ReportDTO getById(String id) throws ServiceException {
+    public ReportDTO getById(Long id) throws ServiceException {
         return null;
     }
 
@@ -42,6 +47,33 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public int getNumberOfRecords(QueryBuilder queryBuilder) throws ServiceException {
-        return 0;
+        int numberOfRecords = 0;
+        try {
+            transaction.beginNoTransaction(reportDAO);
+            numberOfRecords = reportDAO.getNoOfRecords(queryBuilder);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        } finally {
+            transaction.endNoTransaction();
+        }
+        return numberOfRecords;
+    }
+
+    @Override
+    public List<ReportDTO> getReportsByEventId(QueryBuilder queryBuilder) throws ServiceException {
+        List<ReportDTO> reportsDTO = new ArrayList<>();;
+        List<Report> reports;
+        try {
+            transaction.beginNoTransaction(reportDAO);
+            reports = reportDAO.getAll(queryBuilder);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        } finally {
+            transaction.endNoTransaction();
+        }
+        for (Report report : reports) {
+            reportsDTO.add(convertToReportDTO(report));
+        }
+        return reportsDTO;
     }
 }

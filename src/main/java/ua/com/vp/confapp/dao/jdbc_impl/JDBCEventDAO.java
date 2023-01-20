@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.EventQueries.*;
 import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.TablesColumns.*;
+import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.UserQueries.SQL_ADD_USER;
 
 
 public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
@@ -23,11 +24,22 @@ public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
 
     @Override
     public boolean create(Event event) throws IllegalArgumentException, DAOException {
-        if (event.getId() != null) {
-            throw new IllegalArgumentException("Event is already created, the event ID is not null.");
-        }
-        Object[] addressParams = getAddressParams(event);
+        DAOUtil.isIdNull(event);
+        Object[] values = getEventParams(event);
 
+        try (PreparedStatement statement =
+                     DAOUtil.prepareStatement(connection, SQL_ADD_EVENT, true, values)) {
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Creating event failed, no rows affected.");
+            }
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                event.setId(generatedKeys.getLong(1));
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
         return true;
     }
 
@@ -102,7 +114,7 @@ public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
         try (PreparedStatement statement = connection.prepareStatement(SQL_COUNT_EVENTS + conditionQuery);
              ResultSet resultSet = statement.executeQuery();) {
             if (resultSet.next()) {
-                eventNumber = resultSet.getInt(COUNT);
+                eventNumber = resultSet.getInt(EVENTS);
             }
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -167,9 +179,11 @@ public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
         event.setDescription(resultSet.getString(DESCRIPTION));
         event.setDateTime(resultSet.getTimestamp(EVENT_DATE).toLocalDateTime());
         event.setVisitors(resultSet.getInt(VISITORS));
+        event.setParticipants(resultSet.getInt(PARTICIPANTS));
+        event.setReports(resultSet.getInt(REPORTS));
         address.setId(resultSet.getLong(PLACE_ID));
         address.setBuildingName(resultSet.getString(BUILDING));
-        address.setFloor(resultSet.getShort(FLOOR));
+        address.setFloor(resultSet.getInt(FLOOR));
         address.setStreetNumber(resultSet.getString(STREET_NUMBER));
         address.setStreetName(resultSet.getString(STREET_NAME));
         address.setCity(resultSet.getString(CITY));
@@ -188,12 +202,12 @@ public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
         };
     }
 
-    private Object[] getEventParams(Event event, Integer key) {
+    private Object[] getEventParams(Event event) {
         return new Object[]{
                 event.getName(),
                 event.getDescription(),
                 event.getDateTime(),
-                key
+                event.getAddress().getId()
         };
     }
 

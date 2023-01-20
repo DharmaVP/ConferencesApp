@@ -98,6 +98,22 @@ public class JDBCRoleDAO extends JDBCEntityDAO implements RoleDAO {
         return 0;
     }
 
+
+    @Override
+    public Optional<User.Role> find(String roleName) throws DAOException {
+        User.Role role = null;
+
+        try (PreparedStatement statement = DAOUtil.prepareStatement(connection, SQL_FIND_ROLE_BY_NAME, false, roleName);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                role = map(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return Optional.ofNullable(role);
+    }
+
     private User.Role map(ResultSet resultSet) throws SQLException {
         User.Role role = new User.Role();
         role.setId(resultSet.getLong(ROLE_ID));

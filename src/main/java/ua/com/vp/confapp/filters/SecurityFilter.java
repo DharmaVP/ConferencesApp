@@ -30,7 +30,6 @@ public class SecurityFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
 
-        String servletPath = req.getServletPath();
 
         // Информация пользователя сохранена в Session
         // (После успешного входа в систему).

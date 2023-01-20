@@ -4,6 +4,7 @@ import ua.com.vp.confapp.dao.*;
 import ua.com.vp.confapp.dto.EventDTO;
 import ua.com.vp.confapp.entities.Event;
 import ua.com.vp.confapp.exception.DAOException;
+import ua.com.vp.confapp.exception.NoSuchEntityException;
 import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.services.EventService;
 import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
@@ -11,6 +12,7 @@ import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ua.com.vp.confapp.utils.MapperDTO.convertDTOToEvent;
 import static ua.com.vp.confapp.utils.MapperDTO.convertToEventDTO;
 
 public class EventServiceImpl implements EventService {
@@ -24,22 +26,42 @@ public class EventServiceImpl implements EventService {
         this.eventAddressDAO = eventAddressDAO;
     }
 
-
-    //    public EventDTO createEvent(eventDTO) throws ServiceException {
-//        validateEvent(eventDTO);
-//        Event event = convertDTOToEvent(eventDTO);
-//        try {
-//            eventDAO.add(event);
-//        } catch (DAOException e) {
-//            checkExceptionType(e);
-//        }
-//        return convertEventToDTO(event);
-//    }
+    @Override
+    public void create(EventDTO eventDTO) throws ServiceException {
+        Event event = convertDTOToEvent(eventDTO);
+        Event.EventAddress address = event.getAddress();
+        try {
+            transaction.begin(List.of(eventDAO, eventAddressDAO));
+            Long addressId = eventAddressDAO.findByParams(address);
+            if (addressId == null) {
+                eventAddressDAO.create(address);
+            } else {
+                address.setId(addressId);
+            }
+            eventDAO.create(event);
+            transaction.commit();
+            eventDTO.setId(event.getId());
+        } catch (DAOException e) {
+            transaction.rollback();
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
+    }
 
 
     @Override
-    public EventDTO getById(String id) throws ServiceException {
-        return null;
+    public EventDTO getById(Long id) throws ServiceException {
+        Event event;
+        try {
+            transaction.beginNoTransaction(eventDAO);
+            event = eventDAO.read(id).orElseThrow(NoSuchEntityException::new);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        } finally {
+            transaction.endNoTransaction();
+        }
+        return convertToEventDTO(event);
     }
 
     @Override
@@ -73,16 +95,16 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public int getNumberOfRecords(QueryBuilder queryBuilder) throws ServiceException {
-        int numberOfrecords = 0;
+        int numberOfRecords = 0;
         try {
             transaction.beginNoTransaction(eventDAO);
-            numberOfrecords = eventDAO.getNoOfRecords(queryBuilder);
+            numberOfRecords = eventDAO.getNoOfRecords(queryBuilder);
         } catch (DAOException e) {
             throw new ServiceException(e);
         } finally {
             transaction.endNoTransaction();
         }
-        return numberOfrecords;
+        return numberOfRecords;
     }
 
 
@@ -91,6 +113,18 @@ public class EventServiceImpl implements EventService {
         try {
             transaction.beginNoTransaction(eventDAO);
             eventDAO.createParticipant(userId, eventId);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        } finally {
+            transaction.endNoTransaction();
+        }
+    }
+
+    @Override
+    public void cancelRegistration(Long userId, Long eventId) throws ServiceException {
+        try {
+            transaction.beginNoTransaction(eventDAO);
+            eventDAO.deleteParticipant(userId, eventId);
         } catch (DAOException e) {
             throw new ServiceException(e);
         } finally {

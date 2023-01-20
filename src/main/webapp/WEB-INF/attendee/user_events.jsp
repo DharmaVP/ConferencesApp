@@ -10,6 +10,8 @@
 <fmt:setBundle basename="resources"/>
 
 
+<c:set var="base" value="controller?action=user_events"/>
+
 <fmt:message key="signup.label.email" var="email"/>
 <fmt:message key="signup.label.password" var="password"/>
 <fmt:message key="signup.label.confirm_password" var="confirm_password"/>
@@ -39,43 +41,9 @@
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/fragments/header.jsp"/>
-<br><br>
-<jsp:include page="/WEB-INF/fragments/navbar.jsp"/>
 
-<!-- Overlay effect when opening sidebar on small screens -->
+<jsp:include page="/WEB-INF/guest/events.jsp"/>
 
-<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:250px">
-    <div class="w3-row w3-padding-64">
-        <div class="w3-twothird w3-container">
-            <h1 class="w3-text-teal">Your events </h1>
-            <button>Past Events</button> <button>Future Events</button>
-            <p>
-
-            <form action="/controller">
-                <input hidden/>
-                <label>Prefix</label>
-                <input type="text"><br>
-                <label>First Name</label>
-                <input type="text"><br>
-            </form>
-            </p>
-        </div>
-        <div class="w3-third w3-container">
-            <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-            <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<jsp:include page="/WEB-INF/fragments/footer.jsp"/>
 
 </body>
 </html>
-
-

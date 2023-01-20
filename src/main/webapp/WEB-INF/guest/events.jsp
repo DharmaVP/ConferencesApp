@@ -3,9 +3,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language"
-       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-       scope="session"/>
+<%--<c:set var="language"--%>
+<%--       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"--%>
+<%--       scope="session"/>--%>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="resources"/>
 
@@ -16,7 +16,7 @@
 <fmt:message key="signup.button.submit" var="signup"/>
 
 
-<c:set var="base" value="controller?action=get_all_events&date_type=upcoming"/>
+<c:set var="base" value="controller?action=get_all_events"/>
 <c:set var="setSort" value="&sort="/>
 <c:set var="sortField" value="&sort=${param.sort}"/>
 <c:set var="chooseOrder"
@@ -24,6 +24,7 @@
 <c:set var="orderField"
        value="&order=${param.order}"/>
 <c:set var="limits" value="&page=1&records=${param.records}"/>
+<c:set var="dateType" value="&date_type=${param.date_type}"/>
 <c:set var="searchField" value="&search=${param.search}"/>
 <c:set var="dateFrom" value="&date_from=${param.date_from}"/>
 <c:set var="dateTo" value="&date_to=${param.date_to}"/>
@@ -68,7 +69,10 @@
         <div class="w3-panel">
             <form method="GET" action="controller" class="w3-panel">
                 <input type="hidden" name="action" value="get_all_events">
-                <input type="hidden" name="date_type" value="upcoming">
+                <label>Upcoming events</label>
+                <input type="radio" name="date_type" value="upcoming">
+                <label>Passed events</label>
+                <input type="radio" name="date_type" value="passed">
                 <input type="hidden" name="sort" value=${param.sort}>
                 <input type="hidden" name="order" value=${param.order}>
                 <%--                <label>--%>
@@ -109,36 +113,37 @@
 
         <table class="w3-table w3-striped">
             <tr class="w3-pink">
-                <th>Event Id
-                    <a href="${base}${setSort}event_id${chooseOrder}${searchField}${dateFrom}${dateTo}${limits}">
-                        <i class="fa fa-unsorted"></i>
-                    </a>
-                </th>
                 <th>Name
-                    <a href="${base}${setSort}name${chooseOrder}${searchField}${dateFrom}${dateTo}${limits}">
+                    <a href="${base}${setSort}name${chooseOrder}${dateType}${searchField}${dateFrom}${dateTo}${limits}">
                         <i class="fa fa-unsorted"></i>
                     </a>
                 </th>
                 <th>Description</th>
                 <th>Date
-                    <a href="${base}${setSort}event_date${chooseOrder}${searchField}${dateFrom}${dateTo}${limits}">
+                    <a href="${base}${setSort}event_date${chooseOrder}${dateType}${searchField}${dateFrom}${dateTo}${limits}">
                         <i class="fa fa-unsorted"></i>
                     </a>
                 </th>
-                <th>Register</th>
+                <th>Place</th>
+                <th>Participants</th>
+                <th>Reports</th>
+                <th>View details and register</th>
             </tr>
 
 
             <c:forEach var="event" items="${eventList}">
                 <tr>
-                    <td>${event.id}</td>
                     <td>${event.name}</td>
                     <td>${event.description}</td>
                     <td>${event.eventDateTime}</td>
+                    <td>${event.city}, ${event.country}</td>
+                    <td>${event.participants}</td>
+                    <td>${event.numberOfReports}</td>
                     <td>
-                        <form action="controller?action=register_for_event" method="POST">
-                            <input name="event.id" value="${event.id}" type="hidden"/>
-                            <button>register</button>
+                        <form action="controller" method="GET">
+                            <input name="action" value="view_event" type="hidden"/>
+                            <input name="event_id" value="${event.id}" type="hidden"/>
+                            <button class="w3-button w3-green w3-hover" onclick="submit()">view</button>
                         </form>
                     </td>
                 </tr>
@@ -154,7 +159,7 @@
                 <!--For displaying previous link except for the 1st page -->
                 <c:if test="${requestScope.page != 1}">
                     <td>
-                        <a href="${base}${sortField}${orderField}${searchField}${dateFrom}${dateTo}&page=${param.page-1}&records=${param.records}">Previous</a>
+                        <a href="${base}${sortField}${orderField}${dateType}${searchField}${dateFrom}${dateTo}&page=${param.page-1}&records=${param.records}">Previous</a>
                     </td>
                 </c:if>
             </div>
@@ -171,7 +176,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <td>
-                                        <a href="${base}${sortField}${orderField}${searchField}${dateFrom}${dateTo}&page=${i}&records=${param.records}">${i}</a>
+                                        <a href="${base}${sortField}${orderField}${dateType}${searchField}${dateFrom}${dateTo}&page=${i}&records=${param.records}">${i}</a>
                                     </td>
                                 </c:otherwise>
                             </c:choose>
@@ -184,7 +189,7 @@
                     <%--For displaying Next link except for the last page --%>
                 <c:if test="${requestScope.page lt requestScope.noOfPages}">
                     <td>
-                        <a href="${base}${sortField}${orderField}${searchField}${dateFrom}${dateTo}&page=${param.page+1}&records=${param.records}">Next</a>
+                        <a href="${base}${sortField}${orderField}${dateType}${searchField}${dateFrom}${dateTo}&page=${param.page+1}&records=${param.records}">Next</a>
                     </td>
                 </c:if>
             </div>
@@ -194,8 +199,9 @@
         <br>
         <label>Records per page</label>
             <select name="records" onchange="updateRecords(value)">
+                <option value="" selected="selected" hidden="hidden">Choose</option>
                 <option value="3" ${param.records eq "3" ? "selected" : ""}>3</option>
-                <option value="5" ${param.records eq "5" ? "selected" : ""} selected>5</option>
+                <option value="5" ${param.records eq "5" ? "selected" : ""}>5</option>
                 <option value="10" ${param.records eq "10" ? "selected" : ""}>10</option>
             </select>
 
@@ -204,6 +210,7 @@
 <script>
     function updateRecords(value) {
         const url = new URL(window.location);
+        url.searchParams.set('page', 1);
         url.searchParams.set('records', value);
         window.history.pushState(null, '', url.toString());
         location.reload()

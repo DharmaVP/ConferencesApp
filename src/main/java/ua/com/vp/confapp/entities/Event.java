@@ -10,6 +10,8 @@ public class Event extends Entity {
     private LocalDateTime dateTime;
     private Integer visitors;
     private EventAddress address;
+    private Integer reports;
+    private Integer participants;
 
 
     public String getName() {
@@ -52,6 +54,21 @@ public class Event extends Entity {
         this.address = address;
     }
 
+    public Integer getReports() {
+        return reports;
+    }
+
+    public void setReports(Integer reports) {
+        this.reports = reports;
+    }
+
+    public Integer getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Integer participants) {
+        this.participants = participants;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -84,7 +101,7 @@ public class Event extends Entity {
     public static class EventAddress extends Entity {
 
         private String buildingName;
-        private Short floor;
+        private Integer floor;
         private String streetNumber;
         private String streetName;
         private String city;
@@ -100,11 +117,11 @@ public class Event extends Entity {
             this.buildingName = buildingName;
         }
 
-        public Short getFloor() {
+        public Integer getFloor() {
             return floor;
         }
 
-        public void setFloor(Short floor) {
+        public void setFloor(Integer floor) {
             this.floor = floor;
         }
 

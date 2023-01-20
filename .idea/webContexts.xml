@@ -3,6 +3,8 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/attendee/event.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/attendee" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/attendee/user_events.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/attendee" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/guest/sign_up.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/guest" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/user/profile.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/user" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />

@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<c:set var="language"
-       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-       scope="session"/>
+<%--<c:set var="language"--%>
+<%--       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"--%>
+<%--       scope="session"/>--%>
 
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="resources"/>

@@ -13,7 +13,7 @@ public final class TablesColumns {
     public static final String ORGANISATION = "organisation";
     public static final String REGISTRATION_DATE = "registration_date";
     public static final String PROFILE_PICTURE = "profile_picture";
-    public static final String SEND_EMAIL = "send_email";
+    public static final String ROLE_ROLE_ID = "role_role_id";
     public static final String ROLE_ID = "role_id";
     public static final String NAME = "name";
     // table: event
@@ -22,6 +22,7 @@ public final class TablesColumns {
     public static final String DESCRIPTION = "description";
     public static final String EVENT_DATE = "event_date";
     public static final String VISITORS = "visitors";
+    public static final String PLACE_PLACE_ID = "place_id";
     // table: event-address
     public static final String PLACE_ID = "place_id";
     public static final String BUILDING = "building";
@@ -36,9 +37,14 @@ public final class TablesColumns {
     public static final String TOPIC = "topic";
     public static final String OUTLINE = "outline";
     public static final String ACCEPTED = "accepted";
+    public static final String USERS_USER_ID = "users_user_id";
+    public static final String EVENT_EVENT_ID = "event_event_id";
     // table: participant
     public static final String SPEAKER = "speaker";
 
     // functions
     public static final String COUNT = "COUNT(*)";
+    public static final String EVENTS = "events";
+    public static final String PARTICIPANTS = "participants";
+    public static final String REPORTS = "reports";
 }

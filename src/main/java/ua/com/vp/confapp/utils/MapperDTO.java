@@ -26,7 +26,7 @@ public class MapperDTO {
         return user;
     }
 
-    public static UserDTO convertToUserDTO (User user){
+    public static UserDTO convertToUserDTO(User user){
         return UserDTO.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -41,26 +41,74 @@ public class MapperDTO {
                 .build();
     }
 
-    public static Event convertToEvent (EventDTO eventDTO){
+    public static Event convertDTOToEvent(EventDTO eventDTO){
         Event event = new Event();
+        event.setId(eventDTO.getId());
+        event.setName(eventDTO.getName());
+        event.setDescription(eventDTO.getDescription());
+        event.setDateTime(eventDTO.getEventDateTime());
+        event.setVisitors(eventDTO.getVisitors());
+        Event.EventAddress address = new Event.EventAddress();
+        address.setId(eventDTO.getPlaceId());
+        address.setBuildingName(eventDTO.getBuilding());
+        address.setFloor(eventDTO.getFloor());
+        address.setStreetNumber(eventDTO.getStreetNumber());
+        address.setStreetName(eventDTO.getStreetName());
+        address.setCity(eventDTO.getCity());
+        address.setPostalCode(eventDTO.getPostalCode());
+        address.setCountry(eventDTO.getCountry());
+        event.setAddress(address);
         return event;
     }
 
-    public static EventDTO convertToEventDTO (Event event){
+    public static EventDTO convertToEventDTO(Event event){
         return EventDTO.builder()
                 .id(event.getId())
                 .name(event.getName())
                 .description(event.getDescription())
                 .eventDateTime(event.getDateTime())
+                .visitors(event.getVisitors())
+                .participants(event.getParticipants())
+                .numberOfReports(event.getReports())
+                .placeId(event.getAddress().getId())
+                .building(event.getAddress().getBuildingName())
+                .floor(event.getAddress().getFloor())
+                .streetNumber(event.getAddress().getStreetNumber())
+                .streetName(event.getAddress().getStreetName())
+                .city(event.getAddress().getCity())
+                .postalCode(event.getAddress().getPostalCode())
+                .country(event.getAddress().getCountry())
                 .build();
     }
 
     public static Report convertToReport(ReportDTO reportDTO){
         Report report = new Report();
+        User speaker = new User();
+        Event event = new Event();
+        report.setId(reportDTO.getId());
+        report.setTopic(reportDTO.getTopic());
+        report.setOutline(reportDTO.getOutline());
+        speaker.setId(reportDTO.getSpeakerId());
+        report.setSpeaker(speaker);
+        event.setId(reportDTO.getEventId());
+        report.setEvent(event);
+        report.setAccepted(reportDTO.getAccepted());
         return report;
     }
 
     public static ReportDTO convertToReportDTO(Report report){
-        return ReportDTO.builder().build();
+        return ReportDTO.builder()
+                .id(report.getId())
+                .topic(report.getTopic())
+                .outline(report.getOutline())
+                .speakerId(report.getSpeaker() == null ? null : report.getSpeaker().getId())
+                .prefix(report.getSpeaker() == null ? null : report.getSpeaker().getPrefix() == null ? null : report.getSpeaker().getPrefix().getName())
+                .firstName(report.getSpeaker() == null ? null : report.getSpeaker().getFirstName())
+                .lastName(report.getSpeaker() == null ? null : report.getSpeaker().getLastName())
+                .jobTitle(report.getSpeaker() == null ? null : report.getSpeaker().getJobTitle())
+                .organisation(report.getSpeaker() == null ? null : report.getSpeaker().getOrganisation())
+                .eventId(report.getEvent().getId())
+                .accepted(report.getAccepted())
+                .build();
     }
 }

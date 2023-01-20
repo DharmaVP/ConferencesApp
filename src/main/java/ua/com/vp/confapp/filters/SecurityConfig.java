@@ -30,8 +30,10 @@ public class SecurityConfig {
     static {
         attendeeCommands = EnumSet.of(
                 ENTER_CABINET,
-
-                REGISTER_FOR_EVENT
+                GET_PROFILE,
+                REGISTER_FOR_EVENT,
+                VIEW_EVENT,
+                USER_EVENTS
         );
     //    attendeeCommands.addAll(guestCommands);
 
@@ -40,8 +42,7 @@ public class SecurityConfig {
 
     static {
         speakerCommands = EnumSet.of(
-                ADD_REPORT,
-                GET_PROFILE
+                ADD_REPORT
         );
         speakerCommands.addAll(attendeeCommands);
 
@@ -50,7 +51,10 @@ public class SecurityConfig {
 
     static {
         moderatorCommands = EnumSet.of(
-                ADD_EVENT
+                ADD_EVENT,
+                REMOVE_EVENT,
+                EDIT_EVENT,
+                GET_ALL_USERS
         );
         moderatorCommands.addAll(speakerCommands);
 

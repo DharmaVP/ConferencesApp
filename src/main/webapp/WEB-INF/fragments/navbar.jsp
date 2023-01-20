@@ -28,32 +28,32 @@
         <c:when test="${sessionScope.user.role eq 'admin'}">
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">My Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">Users</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=manage_events">Edit Events</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_users">Users</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="#">Reports</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'moderator'}">
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">My Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">Users</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=manage_events">Edit Events</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_users">Users</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="#">Reports</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'speaker'}">
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">My Events</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="#">Reports</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'attendee'}">
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">My Events</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
         </c:when>
     </c:choose>

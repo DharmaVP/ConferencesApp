@@ -30,7 +30,9 @@ public class ServiceFactory {
     }
 
     public ReportService getReportService() {
-        return new ReportServiceImpl(daoFactory);
+        ReportDAO reportDAO = daoFactory.getReportDAO();
+        Transaction transaction = daoFactory.getTransaction();
+        return new ReportServiceImpl(transaction, reportDAO);
     }
 
     public EventService getEventService() {

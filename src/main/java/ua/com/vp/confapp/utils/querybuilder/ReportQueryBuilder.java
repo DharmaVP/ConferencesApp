@@ -1,15 +1,15 @@
 package ua.com.vp.confapp.utils.querybuilder;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 
 import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.TablesColumns.*;
+import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.TablesColumns.EVENT_DATE;
 import static ua.com.vp.confapp.utils.querybuilder.QueryConstants.NOW;
 
-public class EventsQueryBuilder implements QueryBuilder {
+public class ReportQueryBuilder implements QueryBuilder {
     private final List<String> filters;
     private final Set<String> allowedSortFields;
 
@@ -21,70 +21,34 @@ public class EventsQueryBuilder implements QueryBuilder {
 
 
     {
-        sortField = EVENT_DATE;
+        sortField = REPORT_ID;
         filters = new ArrayList<>();
-        allowedSortFields = Set.of(EVENT_ID, EVENT_NAME, EVENT_DATE);
+        allowedSortFields = Set.of(REPORT_ID, TOPIC);
         order = "ASC";
         offset = 0;
         limit = 5;
     }
 
-
-    public EventsQueryBuilder setSearchedEvent(String searchFilter) {
-        if (searchFilter != null && !searchFilter.isEmpty()) {
-            filters.add("name LIKE '%" + searchFilter + "%'");
-        }
+    public ReportQueryBuilder setEventIdFilter(long eventIdFilter) {
+        filters.add("event_event_id=" + eventIdFilter);
         return this;
     }
 
-    public EventsQueryBuilder setDateTypeFilter(String dateFilter) {
-        if (dateFilter != null && dateFilter.equals("passed")) {
-            filters.add(EVENT_DATE + " < " + NOW);
-        } else if (dateFilter != null && dateFilter.equals("upcoming")) {
-            filters.add(EVENT_DATE + " > " + NOW);
-        }
-        return this;
-    }
-
-    public EventsQueryBuilder setDateFilter(String dateFrom, String dateTo) {
-        if ((dateFrom != null && !dateFrom.isEmpty())) {
-            filters.add(EVENT_DATE + " >= '" + dateFrom + "'");
-        }
-        if ((dateTo != null && !dateTo.isEmpty())) {
-            filters.add(EVENT_DATE + " <= '" + dateTo + "'");
-        }
-        return this;
-    }
-
-
-    public EventsQueryBuilder setUserIdFilter(long userIdFilter) {
-        filters.add("user_id=" + userIdFilter);
-        return this;
-    }
-
-    public EventsQueryBuilder setRoleFilter(String roleFilter) {
-        if (roleFilter != null && isPositiveInt(roleFilter)) {
-            filters.add("role_id=" + roleFilter);
-        }
-        return this;
-    }
-
-
-    public EventsQueryBuilder setSortField(String sortField) {
+    public ReportQueryBuilder setSortField(String sortField) {
         if (sortField != null) {
             this.sortField = checkSortField(sortField);
         }
         return this;
     }
 
-    public EventsQueryBuilder setOrder(String order) {
+    public ReportQueryBuilder setOrder(String order) {
         if (order != null && order.equalsIgnoreCase("DESC")) {
             this.order = "DESC";
         }
         return this;
     }
 
-    public EventsQueryBuilder setLimits(String currenPage, String records) {
+    public ReportQueryBuilder setLimits(String currenPage, String records) {
         if (records != null && isPositiveInt(records)) {
             this.limit = Integer.parseInt(records);
         }

@@ -17,6 +17,8 @@ public interface UserDAO extends GenericDAO<User, Long> {
 
     boolean changeRole(User user) throws DAOException;
 
+    boolean isRegistered(Long userId, Long eventId) throws DAOException;
+
 //    /**
 //     * Returns the user from the database matching the given ID, otherwise null.
 //     *

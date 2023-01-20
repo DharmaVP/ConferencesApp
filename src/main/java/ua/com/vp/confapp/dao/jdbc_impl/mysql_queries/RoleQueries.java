@@ -6,13 +6,16 @@ public final class RoleQueries {
             "INSERT INTO role (name) VALUES (?)";
 
     public static final String SQL_FIND_ROLE_BY_ID =
-            "SELECT r.role_id, r.name FROM users u JOIN role r ON u.role_id = r.role_id WHERE u.user_id = ?";
+            "SELECT role_id, name FROM users JOIN role ON role_role_id = role_id WHERE user_id = ?";
 
     public static final String SQL_FIND_ALL_ROLES =
             "SELECT * FROM role";
 
     public static final String SQL_UPDATE_ROLE=
             "UPDATE role SET name = ? WHERE role_id = ?";
+
+    public static final String SQL_FIND_ROLE_BY_NAME=
+            "SELECT * FROM role WHERE name = ?";
 
 
     private RoleQueries() {

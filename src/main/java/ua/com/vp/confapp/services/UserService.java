@@ -12,6 +12,8 @@ public interface UserService extends Service<UserDTO> {
 
     void changeRole(Long userId, String newRole) throws ServiceException;
 
+    boolean isRegistered(UserDTO userDTO, Long eventId) throws ServiceException;
+
 //    void delete(Long userId);
 //
 //    UserDTO findById(Long userId);
@@ -21,6 +23,5 @@ public interface UserService extends Service<UserDTO> {
 //    void changeRoleToSpeaker(Long userId);
 //
 //    void changeRoleToUser(Long userId);
-//
-//    User getUserByEmailPassword(String email, String password);
+
 }

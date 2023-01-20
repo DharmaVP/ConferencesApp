@@ -6,14 +6,14 @@ public final class UserQueries {
             "INSERT INTO users (email, password) VALUES (?, ?)";
 
     public static final String SQL_FIND_USER_BY_ID =
-            "SELECT * FROM users AS u INNER JOIN role AS r ON u.role_id = r.role_id " +
-                    "WHERE u.user_id = ?";
+            "SELECT * FROM users INNER JOIN role ON role_role_id = role_id " +
+                    "WHERE user_id = ?";
 
     public static final String SQL_FIND_USER_BY_EMAIL =
-            "SELECT * FROM users AS u LEFT JOIN role AS r ON u.role_id = r.role_id WHERE email = ?";
+            "SELECT * FROM users LEFT JOIN role ON role_role_id = role_id WHERE email = ?";
 
     public static final String SQL_FIND_ALL_USERS =
-            "SELECT * FROM users AS u INNER JOIN role AS r ON u.role_id = r.role_id";
+            "SELECT * FROM users INNER JOIN role ON role_role_id = role_id";
 
     public static final String SQL_UPDATE_USER_INFO =
             "UPDATE users SET prefix = ?, first_name = ?, last_name = ?, cell_phone = ?," +
@@ -29,13 +29,17 @@ public final class UserQueries {
             "UPDATE users SET email = ? WHERE user_id = ?";
 
     public static final String SQL_SET_USER_ROLE =
-            "UPDATE users SET role_id = ? WHERE user_id = ?";
+            "UPDATE users SET role_role_id = ? WHERE user_id = ?";
 
     public static final String SQL_EXIST_EMAIL =
-            "SELECT id FROM User WHERE email = ?";
+            "SELECT user_id FROM users WHERE email = ?";
 
+    public static final String SQL_FIND_USER_ON_EVENT =
+            "SELECT * FROM participant WHERE users_user_id = ? AND event_event_id = ?";
+
+    public static final String SQL_COUNT_USERS =
+            "SELECT COUNT(*) FROM users INNER JOIN role ON role_role_id = role_id";
 
     private UserQueries() {
-
     }
 }

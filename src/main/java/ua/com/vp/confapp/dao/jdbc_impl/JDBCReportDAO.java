@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.EventQueries.SQL_COUNT_EVENTS;
 import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.ReportQueries.*;
 import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.TablesColumns.*;
 
@@ -94,7 +95,8 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
     @Override
     public List<Report> getAll(QueryBuilder queryBuilder) throws DAOException {
         List<Report> reports = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_REPORTS);
+        String query = queryBuilder.getQuery();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_REPORTS + query);
              ResultSet resultSet = statement.executeQuery();) {
             while (resultSet.next()) {
                 reports.add(mapReport(resultSet));
@@ -107,7 +109,17 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
 
     @Override
     public int getNoOfRecords(QueryBuilder queryBuilder) throws DAOException {
-        return 0;
+        int reportNumber = 0;
+        String conditionQuery = queryBuilder.getRecordQuery();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_COUNT_REPORTS + conditionQuery);
+             ResultSet resultSet = statement.executeQuery();) {
+            if (resultSet.next()) {
+                reportNumber = resultSet.getInt(COUNT);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return reportNumber;
     }
 
     private Object[] getReportParams(Report report) {
@@ -123,6 +135,7 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
         Report report = new Report();
         Event event = obtainEvent(resultSet);
         User speaker = obtainSpeaker(resultSet);
+        report.setId(resultSet.getLong(REPORT_ID));
         report.setTopic(resultSet.getString(TOPIC));
         report.setOutline(resultSet.getString(OUTLINE));
         report.setEvent(event);
@@ -145,21 +158,7 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
 
     private Event obtainEvent(ResultSet resultSet) throws SQLException {
         Event event = new Event();
-        Event.EventAddress address = new Event.EventAddress();
         event.setId(resultSet.getLong(EVENT_ID));
-        event.setName(resultSet.getString(NAME));
-        event.setDescription(resultSet.getString(DESCRIPTION));
-        event.setDateTime(resultSet.getTimestamp(EVENT_DATE).toLocalDateTime());
-        event.setVisitors(resultSet.getInt(VISITORS));
-        address.setId(resultSet.getLong(PLACE_ID));
-        address.setBuildingName(resultSet.getString(BUILDING));
-        address.setFloor(resultSet.getShort(FLOOR));
-        address.setStreetNumber(resultSet.getString(STREET_NUMBER));
-        address.setStreetName(resultSet.getString(STREET_NAME));
-        address.setCity(resultSet.getString(CITY));
-        address.setPostalCode(resultSet.getInt(POSTAL));
-        address.setCountry(resultSet.getString(COUNTRY));
-        event.setAddress(address);
         return event;
     }
 

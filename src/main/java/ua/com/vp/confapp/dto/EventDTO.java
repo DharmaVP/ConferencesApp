@@ -21,11 +21,12 @@ public class EventDTO {
     private Integer visitors;
     private Long placeId;
     private String building;
-    private Short floor;
+    private Integer floor;
     private String streetNumber;
     private String streetName;
     private String city;
     private Integer postalCode;
     private String country;
-
+    private Integer numberOfReports;
+    private Integer participants;
 }

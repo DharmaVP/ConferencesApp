@@ -11,7 +11,7 @@ import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.services.EventService;
 import ua.com.vp.confapp.services.ServiceFactory;
 import ua.com.vp.confapp.utils.PaginatorUtil;
-import ua.com.vp.confapp.utils.querybuilder.EventsQueryBuilder;
+import ua.com.vp.confapp.utils.querybuilder.EventQueryBuilder;
 import ua.com.vp.confapp.utils.querybuilder.QueryBuilder;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import static ua.com.vp.confapp.command.constants.WebPages.*;
 
 public class ViewAllEventsCommand implements Command {
     private static Logger LOGGER = LogManager.getLogger(ViewAllEventsCommand.class);
-    EventService eventService;
+    private EventService eventService;
 
     public ViewAllEventsCommand() {
         eventService = ServiceFactory.getInstance().getEventService();
@@ -29,7 +29,7 @@ public class ViewAllEventsCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-        String page = EVENTS;
+        String page = ALL_EVENTS_PAGE;
         List<EventDTO> events;
 
         QueryBuilder queryBuilder = createQueryBuilder(request);
@@ -59,8 +59,8 @@ public class ViewAllEventsCommand implements Command {
         return new CommandResult(page);
     }
 
-    private EventsQueryBuilder createQueryBuilder(HttpServletRequest request) {
-        return new EventsQueryBuilder()
+    private QueryBuilder createQueryBuilder(HttpServletRequest request) {
+        return new EventQueryBuilder()
                 .setDateTypeFilter(request.getParameter("date_type"))
                 .setSearchedEvent(request.getParameter("search"))
                 .setDateFilter(request.getParameter("date_from"), request.getParameter("date_to"))

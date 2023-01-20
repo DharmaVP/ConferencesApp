@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.ReportQueries.SQL_COUNT_REPORTS;
 import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.TablesColumns.*;
 import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.UserQueries.*;
 
@@ -85,7 +86,9 @@ public class JDBCUserDAO extends JDBCEntityDAO implements UserDAO {
     @Override
     public List<User> getAll(QueryBuilder queryBuilder) throws DAOException {
         List<User> users = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_USERS);
+
+        String conditionQuery = queryBuilder.getQuery();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_USERS + conditionQuery);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 users.add(map(resultSet));
@@ -98,7 +101,17 @@ public class JDBCUserDAO extends JDBCEntityDAO implements UserDAO {
 
     @Override
     public int getNoOfRecords(QueryBuilder queryBuilder) throws DAOException {
-        return 0;
+        int userNumber = 0;
+        String conditionQuery = queryBuilder.getRecordQuery();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_COUNT_USERS + conditionQuery);
+             ResultSet resultSet = statement.executeQuery();) {
+            if (resultSet.next()) {
+                userNumber = resultSet.getInt(COUNT);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return userNumber;
     }
 
 
@@ -158,7 +171,7 @@ public class JDBCUserDAO extends JDBCEntityDAO implements UserDAO {
 
     @Override
     public boolean changeRole(User user) throws IllegalArgumentException, DAOException {
-        DAOUtil.isIdNull(user);
+        DAOUtil.isIdNotNull(user);
         Object[] values = DAOUtil.getUserRoleParams(user);
 
         try (PreparedStatement statement =
@@ -171,6 +184,20 @@ public class JDBCUserDAO extends JDBCEntityDAO implements UserDAO {
             throw new DAOException(e);
         }
         return true;
+    }
+
+    @Override
+    public boolean isRegistered(Long userId, Long eventId) throws DAOException {
+        boolean isRegistered = false;
+
+        try (PreparedStatement statement =
+                     DAOUtil.prepareStatement(connection, SQL_FIND_USER_ON_EVENT, false, userId, eventId);
+             ResultSet resultSet = statement.executeQuery()) {
+            isRegistered = resultSet.next();
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return isRegistered;
     }
 
     private Optional<User> find(String sql, Object... values) throws DAOException {

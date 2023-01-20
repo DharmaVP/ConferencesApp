@@ -17,6 +17,7 @@
         <jakarta.version>6.0.0</jakarta.version>
         <jstl.version>3.0.0</jstl.version>
         <impl.jstl.version>3.0.1</impl.jstl.version>
+        <servlet.jsp.version>3.1.0</servlet.jsp.version>
         <junit.version>5.8.2</junit.version>
         <mysql.version>8.0.31</mysql.version>
         <log4j.version>2.19.0</log4j.version>
@@ -42,6 +43,12 @@
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>${impl.jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>${servlet.jsp.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

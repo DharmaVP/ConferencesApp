@@ -1,5 +1,7 @@
 package ua.com.vp.confapp.command.constants;
 
+import java.time.LocalDateTime;
+
 public interface Parameters {
     //Names
     String CONTROLLER = "controller";
@@ -17,16 +19,31 @@ public interface Parameters {
     String USER_ID = "user.id";
     String EVENT_ID = "event.id";
 
+
+    //EventDTO
+    String EVENT_NAME = "name";
+    String DESCRIPTION = "description";
+    String DATE_TIME = "date_time";
+    String VISITORS = "no_of_visitors";
+
+    String PLACE_ID = "place_id";
+    String BUILDING = "building";
+    String FLOOR = "floor";
+    String STREET_NUMBER = "street_number";
+    String STREET_NAME = "street_name";
+    String CITY = "city";
+    String POSTAL_CODE = "postal_code";
+    String COUNTRY = "country";
+
     String ROLE_GUEST = "guest";
     String ROLE_ATTENDEE = "attendee";
-   String ROLE_SPEAKER = "speaker";
+    String ROLE_SPEAKER = "speaker";
     String ROLE_MODERATOR = "moderator";
     String ROLE_ADMIN = "admin";
 
     //Values
     String SUCCEED_REGISTER = "succeed.registered";
     String FINISH_REGISTRATION = "finish.registration";
-
 
 
 }

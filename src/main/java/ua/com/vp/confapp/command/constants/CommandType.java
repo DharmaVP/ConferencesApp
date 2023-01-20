@@ -44,30 +44,25 @@ public enum CommandType {
 
     DELETE_USER("delete_user", POST),
 
-    CANCEL_REGISTRATION("leave_event", GET),
+    CANCEL_REGISTRATION("cancel_registration", POST),
 
     USER_EVENTS("user_events", GET),
 
     GET_USERS_ON_EVENT("get_users_on_event", GET),
 
-    ALL_USERS("all_users", GET),
+    GET_ALL_USERS("get_all_users", GET),
 
-    ADD_REPORT("add_theme", POST);
+    ADD_REPORT("add_theme", POST),
+
+    VIEW_EVENT("view_event", GET),
+
+    VIEW_USER("view_user", GET),
+
+    CHANGE_ROLE("change_role", POST),
+
+    MANAGE_EVENTS("manage_events", GET);
 
 
-//    ADD_PERMISSION("add_permission", POST),
-//
-//    ADD_ROLE_PAGE("add_role_page", GET),
-//
-//    ADD_THEME_PAGE("add_theme_page", GET),
-//
-//    ADD_PERMISSION_PAGE("add_permission_page", GET),
-//
-//    CHANGE_USER_PERMISSION("change_user_permission", POST),
-//
-//    MODIFY_ANY_EVENT("modify_any_event", GET),
-//
-//    DELETE_ANY_EVENT("delete_any_event", GET);
 
     private String commandName;
 
