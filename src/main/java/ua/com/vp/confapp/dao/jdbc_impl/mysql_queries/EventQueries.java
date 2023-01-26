@@ -18,13 +18,13 @@ public final class EventQueries {
 
 
     public static final String SQL_UPDATE_EVENT =
-            "UPDATE event SET name = ?, description = ?, event_date = ?, place_place_id = ? WHERE event_id = ?";
+            "UPDATE event SET event_date = ?, place_place_id = ? WHERE event_id = ?";
 
     public static final String SQL_DELETE_EVENT =
-            "DELETE FROM event WHERE id = ?";
+            "DELETE FROM event WHERE event_id = ?";
 
     public static final String SQL_COUNT_EVENTS =
-            "SELECT COUNT(DISTINCT event_id) AS events FROM event LEFT JOIN participant AS p ON event_id = p.event_event_id";
+            "SELECT COUNT(DISTINCT event_id) AS events FROM event LEFT JOIN participant AS p ON event_id = p.event_event_id LEFT JOIN report AS r ON event_id = r.event_event_id";
 
     public static final String SQL_SET_VISITORS =
             "UPDATE event SET visitors = ? WHERE event_id = ?";
@@ -38,8 +38,7 @@ public final class EventQueries {
     public static final String SQL_CANCEL_REGISTRATION =
             "DELETE FROM participant WHERE users_user_id = ? AND event_event_id = ?";
 
-    public static final String SQL_SET_SPEAKER =
-            "INSERT INTO participant (users_user_id, event_event_id, speaker) VALUES(?, ?, ?)";
+
 
 
     private EventQueries() {}

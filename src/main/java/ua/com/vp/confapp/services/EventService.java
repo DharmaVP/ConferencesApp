@@ -16,29 +16,5 @@ public interface EventService extends Service<EventDTO> {
 
     void cancelRegistration(Long userId, Long eventId) throws ServiceException;
 
-//EventDTO createEvent(EventDTO eventDTO);
-
-//    Event findById(Long eventId);
-//
-//    List<Event> findAll();
-//
-////    List<Conference> findAll(int offset, int noOfRecords);
-////
-////    List<Conference> findAll(int offset, int noOfRecords, String sort, String sortDir);
-//
-//    List<Event> findByTitle(String text);
-//
-//    List<Event> getPresentationsFromConference(Long eventId);
-//
-//    void insertUser(User user, Long eventId);
-//
-//    boolean updatePresence(Long eventId, Integer visitors);
-//
-//    int getUserCount(Long eventId);
-//
-//    void delete(Long eventId);
-//
-//  //  void updateConference(int id, String title, String description, LocalDate date, Status status, String place);
-//
-//    int getNoOfRecords();
+    void setVisitors(Long eventId, Integer noOfVisitors) throws ServiceException;
 }

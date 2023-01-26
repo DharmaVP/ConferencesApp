@@ -48,6 +48,8 @@
 
     <form action="controller?action=edit_event" method="POST">
         <input type="hidden" name="event_id" value="${event.id}"/>
+        <input type="hidden" name="name" value="${event.name}"/>
+        <input type="hidden" name="description" value="${event.description}"/>
 
         <div class="w3-row w3-padding-64">
             <div class="w3-half w3-container">
@@ -56,14 +58,16 @@
 
                 <div class="w3-margin-bottom">
                     <label><b>Name:</b></label>
-                    <input class="w3-input w3-border w3-hover-light-gray" type="text" placeholder="Enter event name"
-                           name="name" value="${fn:escapeXml(event.name)}" required/>
+                    <div class="w3-input w3-border w3-light-gray">
+                        ${fn:escapeXml(event.name)}
+                    </div>
                 </div>
 
                 <div class="w3-margin-bottom">
-                    <label><b>Description</b></label>
-                    <textarea class="w3-input w3-border w3-hover-light-gray"
-                              name="description" rows="10" cols="20">${fn:escapeXml(event.description)}</textarea>
+                    <label><b>Description:</b></label>
+                    <div class="w3-input w3-border w3-light-gray w3-textarea" style="height:300px">
+                        ${fn:escapeXml(event.description)}
+                    </div>
                 </div>
 
                 <div class="w3-margin-bottom">
@@ -78,6 +82,8 @@
 
 
                 <h1 class="w3-text-teal">Address </h1>
+
+                <input type="hidden" name="place_id" value="${event.placeId}"/>
 
                 <div class="w3-margin-bottom">
                     <label><b>Building:</b></label>

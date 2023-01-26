@@ -50,7 +50,7 @@
             <div class="w3-panel w3-border-pink w3-twothird">
                 <p><b>Event: </b> ${event.name}</p>
                 <p><b>Description: </b> ${event.description}</p>
-                <p><b>Date: </b>  ${event.eventDateTime}</p>
+                <p><b>Date: </b> ${event.eventDateTime}</p>
                 <p><b>Place: </b> ${event.building},
                     <b>Floor: </b> ${event.floor},
                     <b>Address: </b> ${event.streetNumber},
@@ -77,6 +77,7 @@
                         </form>
                     </c:otherwise>
                 </c:choose>
+
             </div>
         </div>
         <table class="w3-table w3-striped">
@@ -99,19 +100,14 @@
 
             <c:forEach var="report" items="${reportList}">
                 <tr>
+
                     <td>${report.id}</td>
                     <td>${report.topic}</td>
                     <td>${report.outline}</td>
                     <td>
-                        <c:choose>
-                            <c:when test="${report.speakerId gt 0 and report.accepted == true}">
-                                ${report.prefix} ${report.firstName} ${report.lastName}, ${report.jobTitle}, ${report.organisation}
-                            </c:when>
-                            <c:otherwise>
-                                Will be announced soon
-                            </c:otherwise>
-                        </c:choose>
+                            ${report.prefix} ${report.firstName} ${report.lastName}, ${report.jobTitle}, ${report.organisation}
                     </td>
+
                 </tr>
             </c:forEach>
         </table>

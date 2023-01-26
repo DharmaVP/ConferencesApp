@@ -70,9 +70,9 @@
             <form method="GET" action="controller" class="w3-panel">
                 <input type="hidden" name="action" value="get_all_events">
                 <label>Upcoming events</label>
-                <input type="radio" name="date_type" value="upcoming">
+                <input type="radio" name="date_type" value="upcoming" ${param.date_type == 'upcoming' ? 'checked' : ''}>
                 <label>Passed events</label>
-                <input type="radio" name="date_type" value="passed">
+                <input type="radio" name="date_type" value="passed" ${param.date_type == 'passed' ? 'checked' : ''}>
                 <input type="hidden" name="sort" value=${param.sort}>
                 <input type="hidden" name="order" value=${param.order}>
                 <%--                <label>--%>
@@ -125,8 +125,6 @@
                     </a>
                 </th>
                 <th>Place</th>
-                <th>Participants</th>
-                <th>Reports</th>
                 <th>View details and register</th>
             </tr>
 
@@ -137,8 +135,6 @@
                     <td>${event.description}</td>
                     <td>${event.eventDateTime}</td>
                     <td>${event.city}, ${event.country}</td>
-                    <td>${event.participants}</td>
-                    <td>${event.numberOfReports}</td>
                     <td>
                         <form action="controller" method="GET">
                             <input name="action" value="view_event" type="hidden"/>

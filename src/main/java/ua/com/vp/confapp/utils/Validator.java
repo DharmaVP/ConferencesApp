@@ -39,10 +39,9 @@ public final class Validator {
             throw new ValidationException(message);
     }
 
-    public static void validateEventDate(String eventDate) throws ValidationException {
+    public static boolean validateEventDate(String eventDate)  {
         LocalDateTime eventDateTime = LocalDateTime.parse(eventDate);
-        if (eventDateTime.isBefore(LocalDateTime.now()))
-            throw new ValidationException("You can't create event in the past");
+        return eventDateTime.isBefore(LocalDateTime.now());
     }
 
     public static void validateDate(EventDTO eventDTO) throws ValidationException {
@@ -53,9 +52,11 @@ public final class Validator {
 
     public static void validateIntValue(String fieldToDigit) throws ValidationException {
         try {
-            Integer.parseInt(fieldToDigit);
+            if (Integer.parseInt(fieldToDigit) < 0){
+                throw new ValidationException("Only positive numbers or 0");
+            }
         } catch (NumberFormatException e) {
-            throw new ValidationException("You can't create event in the past");
+            throw new ValidationException("Only integer values");
         }
     }
 }

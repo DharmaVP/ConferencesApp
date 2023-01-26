@@ -62,9 +62,23 @@ public class EventQueryBuilder implements QueryBuilder {
         return this;
     }
 
-    public EventQueryBuilder setRoleFilter(String roleFilter) {
-        if (roleFilter != null && isPositiveInt(roleFilter)) {
-            filters.add("role_id=" + roleFilter);
+    public EventQueryBuilder setSpeakerFilter(long speakerIdFilter) {
+        if (speakerIdFilter > 0) {
+            filters.add("r.users_user_id=" + speakerIdFilter);
+        }
+        return this;
+    }
+
+    public EventQueryBuilder setAcceptedByModerator(boolean speakerFilter) {
+        if (speakerFilter) {
+            filters.add("r.accepted_by_moderator=true");
+        }
+        return this;
+    }
+
+    public EventQueryBuilder setAcceptedBySpeaker(boolean speakerFilter) {
+        if (speakerFilter) {
+            filters.add("r.accepted_by_speaker=true");
         }
         return this;
     }

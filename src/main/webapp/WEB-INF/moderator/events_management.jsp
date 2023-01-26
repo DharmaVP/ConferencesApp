@@ -84,9 +84,9 @@
                 <form method="GET" action="controller" class="w3-panel">
                     <input type="hidden" name="action" value="manage_events">
                     <label>Upcoming events</label>
-                    <input type="radio" name="date_type" value="upcoming">
+                    <input type="radio" name="date_type" value="upcoming" ${param.date_type == 'upcoming' ? 'checked' : ''}>
                     <label>Passed events</label>
-                    <input type="radio" name="date_type" value="passed">
+                    <input type="radio" name="date_type" value="passed" ${param.date_type == 'passed' ? 'checked' : ''}>
                     <input type="hidden" name="sort" value=${param.sort}>
                     <input type="hidden" name="order" value=${param.order}>
                     <div class="w3-container">
@@ -149,9 +149,9 @@
                     <td>${event.numberOfReports}</td>
                     <td>
                         <form action="controller" method="GET">
-                            <input name="action" value="edit_event_page" type="hidden"/>
+                            <input name="action" value="get_event_to_edit" type="hidden"/>
                             <input name="event_id" value="${event.id}" type="hidden"/>
-                            <button class="w3-button w3-green w3-hover" onclick="submit()">Edit</button>
+                            <button class="w3-button w3-green w3-hover" onclick="submit()">View</button>
                         </form>
                     </td>
                 </tr>

@@ -155,15 +155,15 @@ public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
         return true;
     }
 
+
     @Override
-    public boolean updateParticipant(Long userId, Long eventId, Boolean isSpeaker) throws DAOException {
-        Object[] values = {userId, eventId, isSpeaker};
+    public boolean updateVisitors(Long eventId, Integer noOfVisitors) throws DAOException {
 
         try (PreparedStatement statement =
-                     DAOUtil.prepareStatement(connection, SQL_SET_SPEAKER, false, values)) {
+                     DAOUtil.prepareStatement(connection, SQL_SET_VISITORS, false, noOfVisitors, eventId)) {
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
-                throw new DAOException("Updating participant has been failed");
+                throw new DAOException("Updating visitors has been failed");
             }
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -195,9 +195,8 @@ public class JDBCEventDAO extends JDBCEntityDAO implements EventDAO {
 
     private Object[] getEventParamsUpdate(Event event) {
         return new Object[]{
-                event.getName(),
-                event.getDescription(),
                 event.getDateTime(),
+                event.getAddress().getId(),
                 event.getId()
         };
     }

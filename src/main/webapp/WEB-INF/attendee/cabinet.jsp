@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="cfg" uri="/WEB-INF/tld/tags.tld"%>
 
 <c:set var="language"
        value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
@@ -10,10 +11,13 @@
 <fmt:setBundle basename="resources"/>
 
 
+
+
 <fmt:message key="signup.label.email" var="email"/>
 <fmt:message key="signup.label.password" var="password"/>
 <fmt:message key="signup.label.confirm_password" var="confirm_password"/>
 <fmt:message key="signup.button.submit" var="signup"/>
+
 <!DOCTYPE html>
 <html lang="${language}">
 <head>
@@ -50,7 +54,7 @@
 <div class="w3-main" style="margin-left:250px">
     <div class="w3-row w3-padding-64">
         <div class="w3-twothird w3-container">
-            <h1 class="w3-text-teal">WELCOME, ${user.email}, ${user.role} </h1>
+            <h1 class="w3-text-teal">Welcome, ${user.role} <cfg:welcome role="admin"/></h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                 ex ea commodo consequat. Lorem ipsum

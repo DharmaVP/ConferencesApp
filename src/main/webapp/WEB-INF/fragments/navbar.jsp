@@ -31,7 +31,7 @@
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=manage_events">Edit Events</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_users">Users</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">Reports</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_reports&speaker_id=true&moderator=false&speaker=true">Reports</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'moderator'}">
@@ -40,14 +40,15 @@
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=manage_events">Edit Events</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_users">Users</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">Reports</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_reports&speaker_id=true&moderator=false&speaker=true">Reports</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'speaker'}">
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="#">Reports</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=view_events_to_speak">Events to speak</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=view_speaker_reports&speaker_id=true&moderator=true&speaker=false">Reports</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'attendee'}">

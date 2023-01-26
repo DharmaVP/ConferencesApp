@@ -92,7 +92,8 @@ public class MapperDTO {
         report.setSpeaker(speaker);
         event.setId(reportDTO.getEventId());
         report.setEvent(event);
-        report.setAccepted(reportDTO.getAccepted());
+        report.setAcceptedByModerator(reportDTO.getAcceptedByModerator());
+        report.setAcceptedBySpeaker(reportDTO.getAcceptedBySpeaker());
         return report;
     }
 
@@ -108,7 +109,8 @@ public class MapperDTO {
                 .jobTitle(report.getSpeaker() == null ? null : report.getSpeaker().getJobTitle())
                 .organisation(report.getSpeaker() == null ? null : report.getSpeaker().getOrganisation())
                 .eventId(report.getEvent().getId())
-                .accepted(report.getAccepted())
+                .acceptedByModerator(report.getAcceptedByModerator())
+                .acceptedBySpeaker(report.getAcceptedBySpeaker())
                 .build();
     }
 }

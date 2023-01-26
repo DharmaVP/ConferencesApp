@@ -10,22 +10,11 @@ import static ua.com.vp.confapp.command.constants.Parameters.*;
 public class SecurityConfig {
 
     private static final Map<String, EnumSet<CommandType>> mapConfig = new HashMap<>();
-   // private static final EnumSet<CommandType> guestCommands;
     private static final EnumSet<CommandType> attendeeCommands;
     private static final EnumSet<CommandType> speakerCommands;
     private static final EnumSet<CommandType> moderatorCommands;
     private static final EnumSet<CommandType> adminCommands;
 
-//    static {
-//        guestCommands = EnumSet.of(
-//                GET_SIGN_IN_PAGE,
-//                SIGN_IN,
-//                GET_SIGN_UP_PAGE,
-//                SIGN_UP,
-//                GET_ALL_EVENTS
-//        );
-//        mapConfig.put(ROLE_GUEST, guestCommands);
-//    }
 
     static {
         attendeeCommands = EnumSet.of(
@@ -35,7 +24,6 @@ public class SecurityConfig {
                 VIEW_EVENT,
                 USER_EVENTS
         );
-    //    attendeeCommands.addAll(guestCommands);
 
         mapConfig.put(ROLE_ATTENDEE, attendeeCommands);
     }

@@ -1,11 +1,4 @@
-2023-01-19 14:31:11 [http-nio-8080-exec-12] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-19 14:33:09 [http-nio-8080-exec-15] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-19 14:33:12 [http-nio-8080-exec-17] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-19 14:33:14 [http-nio-8080-exec-19] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-19 17:26:43 [http-nio-8080-exec-10] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
-2023-01-19 17:26:52 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
-2023-01-19 17:32:45 [http-nio-8080-exec-10] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
-2023-01-19 20:16:44 [http-nio-8080-exec-4] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-19 20:16:46 [http-nio-8080-exec-9] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-19 20:16:47 [http-nio-8080-exec-1] ERROR com.vp.confapp.controller.FrontController - No such command exist
-2023-01-19 20:58:51 [http-nio-8080-exec-14] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
+2023-01-24 18:33:11 [http-nio-8080-exec-22] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
+2023-01-24 18:33:17 [http-nio-8080-exec-33] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
+2023-01-24 18:36:25 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
+2023-01-24 18:36:28 [http-nio-8080-exec-8] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!

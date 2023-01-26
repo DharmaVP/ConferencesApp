@@ -11,9 +11,9 @@ public interface Service <T> {
 
     List<T> getAll(QueryBuilder queryBuilder) throws ServiceException;
 
-    boolean update(T entity) throws ServiceException;
+    void update(T entity) throws ServiceException;
 
-    boolean delete(T entity) throws ServiceException;
+    void delete(T entity) throws ServiceException;
 
     int getNumberOfRecords(QueryBuilder queryBuilder) throws ServiceException;
 }

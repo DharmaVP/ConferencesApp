@@ -83,7 +83,7 @@ DROP TABLE IF EXISTS `conference_db`.`event` ;
 CREATE TABLE IF NOT EXISTS `conference_db`.`event` (
   `event_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
-  `description` TEXT(1000) NULL,
+  `description` TEXT(1000) NOT NULL,
   `event_date` DATETIME NOT NULL,
   `visitors` INT UNSIGNED NULL DEFAULT 0,
   `place_place_id` INT NOT NULL,
@@ -110,7 +110,8 @@ CREATE TABLE IF NOT EXISTS `conference_db`.`report` (
   `outline` TEXT(1000) NULL,
   `event_event_id` INT NOT NULL,
   `users_user_id` INT NULL,
-  `accepted` TINYINT(1) NULL DEFAULT 0,
+  `accepted_by_moderator` TINYINT(1) NULL DEFAULT 0,
+  `accepted_by_speaker` TINYINT(1) NULL DEFAULT 0,
   PRIMARY KEY (`report_id`),
   INDEX `fk_report_event1_idx` (`event_event_id` ASC) VISIBLE,
   INDEX `fk_report_user1_idx` (`users_user_id` ASC) VISIBLE,
@@ -136,7 +137,6 @@ DROP TABLE IF EXISTS `conference_db`.`participant` ;
 CREATE TABLE IF NOT EXISTS `conference_db`.`participant` (
   `users_user_id` INT NOT NULL,
   `event_event_id` INT NOT NULL,
-  `speaker` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`users_user_id`, `event_event_id`),
   INDEX `fk_user_has_event_event1_idx` (`event_event_id` ASC) VISIBLE,
   INDEX `fk_user_has_event_user1_idx` (`users_user_id` ASC) VISIBLE,

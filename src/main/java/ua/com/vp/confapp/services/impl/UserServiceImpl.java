@@ -140,7 +140,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean update(UserDTO userDTO) throws ServiceException {
+    public void update(UserDTO userDTO) throws ServiceException {
         User user = convertToUser(userDTO);
 
         try {
@@ -151,11 +151,10 @@ public class UserServiceImpl implements UserService {
         } finally {
             transaction.endNoTransaction();
         }
-        return true;
     }
 
     @Override
-    public boolean delete(UserDTO userDTO) throws ServiceException {
+    public void delete(UserDTO userDTO) throws ServiceException {
         User user = convertToUser(userDTO);
 
         try {
@@ -166,7 +165,6 @@ public class UserServiceImpl implements UserService {
         } finally {
             transaction.endNoTransaction();
         }
-        return true;
     }
 
     @Override

@@ -49,7 +49,7 @@ public class ViewEventCommand implements Command {
         UserDTO userDTO = (UserDTO) request.getSession().getAttribute(SESSION_USER);
         try {
             event = eventService.getById(eventId);
-            reports = reportService.getReportsByEventId(queryBuilder);
+            reports = reportService.getAll(queryBuilder);
             isRegistered = userService.isRegistered(userDTO, eventId);
             request.setAttribute("event", event);
             request.setAttribute("reportList", reports);
@@ -66,6 +66,8 @@ public class ViewEventCommand implements Command {
     private QueryBuilder createQueryBuilder(HttpServletRequest request) {
         return new ReportQueryBuilder()
                 .setEventIdFilter(Long.parseLong(request.getParameter("event_id")))
+                .setAcceptedByModerator(true)
+                .setAcceptedBySpeaker(true)
                 .setSortField(request.getParameter("sort"))
                 .setOrder(request.getParameter("order"))
                 .setLimits(request.getParameter("page"), request.getParameter("records"));

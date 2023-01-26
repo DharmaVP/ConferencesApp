@@ -8,6 +8,6 @@ public interface EventDAO extends GenericDAO<Event, Long> {
 
     boolean deleteParticipant(Long userId, Long eventId) throws DAOException;
 
-    boolean updateParticipant(Long userId, Long eventId, Boolean isSpeaker) throws DAOException;
+    boolean updateVisitors(Long eventId, Integer noOfVisitors) throws DAOException;
 
 }

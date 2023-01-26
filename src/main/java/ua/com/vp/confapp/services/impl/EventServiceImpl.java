@@ -84,13 +84,38 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public boolean update(EventDTO entity) throws ServiceException {
-        return false;
+    public void update(EventDTO eventDTO) throws ServiceException {
+        Event event = convertDTOToEvent(eventDTO);
+        Event.EventAddress address = event.getAddress();
+        try {
+            transaction.begin(List.of(eventDAO, eventAddressDAO));
+            Long addressId = eventAddressDAO.findByParams(address);
+            if (addressId == null) {
+                eventAddressDAO.update(address);
+            } else {
+                address.setId(addressId);
+            }
+            eventDAO.update(event);
+            transaction.commit();
+        } catch (DAOException e) {
+            transaction.rollback();
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
     }
 
     @Override
-    public boolean delete(EventDTO entity) throws ServiceException {
-        return false;
+    public void delete(EventDTO eventDTO) throws ServiceException {
+        Event event = convertDTOToEvent(eventDTO);
+      try {
+          transaction.beginNoTransaction(eventDAO);
+          eventDAO.delete(event);
+      } catch (DAOException e) {
+          throw new ServiceException(e);
+      } finally {
+          transaction.endNoTransaction();
+      }
     }
 
     @Override
@@ -125,6 +150,18 @@ public class EventServiceImpl implements EventService {
         try {
             transaction.beginNoTransaction(eventDAO);
             eventDAO.deleteParticipant(userId, eventId);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        } finally {
+            transaction.endNoTransaction();
+        }
+    }
+
+    @Override
+    public void setVisitors(Long eventId, Integer noOfVisitors) throws ServiceException {
+        try {
+            transaction.beginNoTransaction(eventDAO);
+            eventDAO.updateVisitors(eventId, noOfVisitors);
         } catch (DAOException e) {
             throw new ServiceException(e);
         } finally {

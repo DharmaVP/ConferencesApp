@@ -8,7 +8,8 @@ public class Report extends Entity {
    private String outline;
    private Event event;
    private User speaker;
-   private Boolean accepted;
+   private Boolean acceptedByModerator;
+   private Boolean acceptedBySpeaker;
 
 
    public String getTopic() {
@@ -43,14 +44,21 @@ public class Report extends Entity {
       this.speaker = speaker;
    }
 
-   public Boolean getAccepted() {
-      return accepted;
+   public Boolean getAcceptedByModerator() {
+      return acceptedByModerator;
    }
 
-   public void setAccepted(Boolean accepted) {
-      this.accepted = accepted;
+   public void setAcceptedByModerator(Boolean acceptedByModerator) {
+      this.acceptedByModerator = acceptedByModerator;
    }
 
+   public Boolean getAcceptedBySpeaker() {
+      return acceptedBySpeaker;
+   }
+
+   public void setAcceptedBySpeaker(Boolean acceptedBySpeaker) {
+      this.acceptedBySpeaker = acceptedBySpeaker;
+   }
 
 
    @Override
@@ -76,7 +84,8 @@ public class Report extends Entity {
               ", outline='" + outline + '\'' +
               ", event=" + event +
               ", speaker=" + speaker +
-              ", accepted=" + accepted +
+              ", acceptedByModerator=" + acceptedByModerator +
+              ", acceptedBySpeaker=" + acceptedBySpeaker +
               "}+\n";
    }
 }

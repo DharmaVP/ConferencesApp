@@ -23,16 +23,17 @@ public class RemoveEventCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-        String page = CommandUtil.getCommandToRedirect(CommandType.GET_ALL_EVENTS);
+        String page = CommandUtil.getCommandToRedirect(CommandType.MANAGE_EVENTS);
 
-        EventDTO eventDTO = (EventDTO) request.getAttribute("event");
+        Long eventId = Long.parseLong(request.getParameter("event_id"));
+        EventDTO eventDTO = EventDTO.builder().id(eventId).build();
         try {
             eventService.delete(eventDTO);
-            request.getSession().setAttribute("success", "event "+ eventDTO.getName() + "has been removed");
+            request.getSession().setAttribute("success", "event has been removed");
         } catch (ServiceException e) {
-            page = EDIT_EVENT_PAGE;
+            page = CommandUtil.getCommandToRedirect(CommandType.GET_EVENT_TO_EDIT)+"&event_id="+eventId;
             request.getSession().setAttribute(ERROR, "couldn't remove event");
-            return new CommandResult(page);
+            return new CommandResult(page, true);
         }
         return new CommandResult(page, true);
     }

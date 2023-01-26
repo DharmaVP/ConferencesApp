@@ -36,11 +36,10 @@ public final class TablesColumns {
     public static final String REPORT_ID = "report_id";
     public static final String TOPIC = "topic";
     public static final String OUTLINE = "outline";
-    public static final String ACCEPTED = "accepted";
+    public static final String ACCEPTED_BY_MODERATOR = "accepted_by_moderator";
+    public static final String ACCEPTED_BY_SPEAKER = "accepted_by_speaker";
     public static final String USERS_USER_ID = "users_user_id";
     public static final String EVENT_EVENT_ID = "event_event_id";
-    // table: participant
-    public static final String SPEAKER = "speaker";
 
     // functions
     public static final String COUNT = "COUNT(*)";

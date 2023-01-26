@@ -16,8 +16,7 @@ import ua.com.vp.confapp.utils.Validator;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static ua.com.vp.confapp.command.constants.CommandType.EDIT_EVENT;
-import static ua.com.vp.confapp.command.constants.CommandType.EDIT_EVENT_PAGE;
+import static ua.com.vp.confapp.command.constants.CommandType.*;
 import static ua.com.vp.confapp.command.constants.Parameters.*;
 import static ua.com.vp.confapp.command.constants.WebPages.ADD_EVENT_PAGE;
 
@@ -39,21 +38,23 @@ public class AddEventCommand implements Command {
             Validator.validateIntValue(request.getParameter(FLOOR));
             Validator.validateIntValue(request.getParameter(POSTAL_CODE));
             Validator.validateNonEmptyFields(request.getParameter(EVENT_NAME),
+                    request.getParameter(DESCRIPTION),
                     request.getParameter(BUILDING),
                     request.getParameter(STREET_NUMBER),
                     request.getParameter(STREET_NAME),
                     request.getParameter(CITY),
                     request.getParameter(POSTAL_CODE),
                     request.getParameter(COUNTRY));
-        } catch (ValidationException e){
+        } catch (ValidationException e) {
             page = ADD_EVENT_PAGE;
+            request.setAttribute(ERROR, e.getMessage());
             return new CommandResult(page);
         }
 
         EventDTO eventDTO = createEventDTO(request);
         try {
             eventService.create(eventDTO);
-            page = CommandUtil.getCommandToRedirect(EDIT_EVENT_PAGE)+"&event_id="+eventDTO.getId();
+            page = CommandUtil.getCommandToRedirect(GET_EVENT_TO_EDIT) + "&event_id=" + eventDTO.getId();
         } catch (ServiceException e) {
             page = ADD_EVENT_PAGE;
             return new CommandResult(page);

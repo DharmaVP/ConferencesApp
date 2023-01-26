@@ -28,5 +28,6 @@ public class ReportDTO {
 
     private Long eventId;
 
-    private Boolean accepted;
+    private Boolean acceptedByModerator;
+    private Boolean acceptedBySpeaker;
 }

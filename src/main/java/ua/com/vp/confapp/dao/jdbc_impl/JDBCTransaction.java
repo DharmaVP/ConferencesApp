@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class JDBCTransaction implements Transaction<JDBCEntityDAO>{
+public class JDBCTransaction implements Transaction<JDBCEntityDAO> {
     private static final Logger logger = LogManager.getLogger();
     private Connection connection;
 
@@ -43,7 +43,7 @@ public class JDBCTransaction implements Transaction<JDBCEntityDAO>{
                 connection.setAutoCommit(true);
                 connection.close();
             } catch (SQLException e) {
-                logger.log(Level.ERROR, " Error changing autocommit status",  e);
+                logger.log(Level.ERROR, " Error changing autocommit status", e);
             }
             connection = null;
         }
@@ -54,7 +54,7 @@ public class JDBCTransaction implements Transaction<JDBCEntityDAO>{
             try {
                 connection.close();
             } catch (SQLException e) {
-                logger.log(Level.ERROR, " Error closing connection",  e);
+                logger.log(Level.ERROR, " Error closing connection", e);
             }
             connection = null;
         }
@@ -73,6 +73,24 @@ public class JDBCTransaction implements Transaction<JDBCEntityDAO>{
             connection.rollback();
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Rollback transaction error", e);
+        }
+    }
+
+    @Override
+    public void setRepeatableRead() {
+        try {
+            connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "Couldn't set isolationMode repeatable_read", e);
+        }
+    }
+
+    @Override
+    public void cancelRepeatableRead() {
+        try {
+            connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+        } catch (SQLException e) {
+            logger.log(Level.ERROR, "Couldn't set isolationMode : read_committed", e);
         }
     }
 

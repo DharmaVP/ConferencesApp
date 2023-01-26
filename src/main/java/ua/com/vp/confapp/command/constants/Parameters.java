@@ -16,8 +16,8 @@ public interface Parameters {
     String MESSAGE = "message";
     String SUCCEED = "succeed";
     String SESSION_USER = "user";
-    String USER_ID = "user.id";
-    String EVENT_ID = "event.id";
+    String USER_ID = "user_id";
+    String EVENT_ID = "event_id";
 
 
     //EventDTO

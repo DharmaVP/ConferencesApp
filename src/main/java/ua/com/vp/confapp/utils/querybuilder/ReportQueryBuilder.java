@@ -34,6 +34,32 @@ public class ReportQueryBuilder implements QueryBuilder {
         return this;
     }
 
+    public ReportQueryBuilder setSpeakerIdFilter(long speakerIdFilter) {
+        if (speakerIdFilter > 0) {
+            filters.add("users_user_id=" + speakerIdFilter);
+        }
+        return this;
+    }
+
+    public ReportQueryBuilder setSpeakerPresence(boolean status) {
+        if (status) {
+            filters.add("users_user_id IS NOT NULL");
+        } else {
+            filters.add("users_user_id IS NULL");
+        }
+        return this;
+    }
+
+    public ReportQueryBuilder setAcceptedByModerator(boolean status) {
+        filters.add("accepted_by_moderator=" + status);
+        return this;
+    }
+
+    public ReportQueryBuilder setAcceptedBySpeaker(boolean status) {
+        filters.add("accepted_by_speaker=" + status);
+        return this;
+    }
+
     public ReportQueryBuilder setSortField(String sortField) {
         if (sortField != null) {
             this.sortField = checkSortField(sortField);

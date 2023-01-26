@@ -42,8 +42,8 @@ public class UserQueryBuilder implements QueryBuilder{
     }
 
     public UserQueryBuilder setRoleFilter(String roleFilter) {
-        if (roleFilter != null && isPositiveInt(roleFilter)) {
-            filters.add("name=" + roleFilter);
+        if (roleFilter != null) {
+            filters.add("name='" + roleFilter+"'");
         }
         return this;
     }

@@ -6,6 +6,7 @@ import ua.com.vp.confapp.command.action.*;
 import ua.com.vp.confapp.command.action.guest.*;
 import ua.com.vp.confapp.command.action.attendee.*;
 import ua.com.vp.confapp.command.action.moderator.*;
+import ua.com.vp.confapp.command.action.speaker.*;
 import ua.com.vp.confapp.command.constants.CommandType;
 import ua.com.vp.confapp.exception.CommandException;
 
@@ -44,29 +45,28 @@ public class CommandFactory {
         commands.put(EDIT_EVENT_PAGE, new EditEventPageCommand());
         commands.put(ADD_EVENT_PAGE, new AddEventPageCommand());
 
-//        commands.put(REMOVE_EVENT, new RemoveEventCommand());
-//        commands.put(EDIT_EVENT, new EditEventCommand());
+        commands.put(GET_EVENT_TO_EDIT, new GetEventToEditCommand());
+        commands.put(ADD_REPORT_PAGE, new AddReportPageCommand());
+        commands.put(ADD_REPORT, new AddReportCommand());
 
-//        commands.put(PROFILE, new ProfileCommand());
+        commands.put(REMOVE_EVENT, new RemoveEventCommand());
+        commands.put(EDIT_EVENT, new EditEventCommand());
+        commands.put(SET_VISITORS, new SetVisitorsCommand());
 
-//        commands.put(EDIT_USER_INFO, new EditUserInfoCommand());
-//        commands.put(EDIT_USER_PHOTO, new EditUserPhotoCommand());
-//        commands.put(DELETE_USER, new DeleteUserCommand());
+        commands.put(GET_ALL_REPORTS, new GetAllReportsCommand());
+        commands.put(APPROVE_SPEAKER, new ApproveSpeakerCommand());
+        commands.put(DELETE_REPORT, new DeleteReportCommand());
+        commands.put(EDIT_REPORT, new EditReportPageCommand());
+        commands.put(CHANGE_SPEAKER, new ChangeSpeakerCommand());
+        commands.put(VIEW_SPEAKER_REPORTS, new ViewSpeakerReportsCommand());
+        commands.put(ACCEPT_REPORT, new AcceptReportCommand());
+        commands.put(PROPOSE_SPEAKER, new ProposeSpeakerCommand());
+        commands.put(DROP_REPORT, new DropProposedReportCommand());
+        commands.put(PROPOSE_REPORT, new ProposeReportCommand());
+        commands.put(VIEW_EVENTS_TO_SPEAK, new ViewEventsToSpeakCommand());
+        commands.put(VIEW_EVENT_TO_SPEAK, new ViewEventToSpeakCommand());
+        commands.put(VIEW_REPORT, new ViewReportCommand());
 
-
-//        commands.put(HOME_PAGE, new HomePageCommand());
-
-
-//        commands.put(START_PAGE, new HomePageCommand());
-
-//        commands.put(ADD_ROLE, new AddRoleCommand());
-//        commands.put(ADD_ROLE_PAGE, new AddRolePageCommand());
-//        commands.put(ADD_THEME, new AddThemeCommand());
-//        commands.put(ADD_THEME_PAGE, new AddThemePageCommand());
-//        commands.put(ADD_PERMISSION, new AddPermissionCommand());
-//        commands.put(ADD_PERMISSION_PAGE, new AddPermissionPageCommand());
-//        commands.put(CHANGE_USER_PERMISSION, new ChangeUserPermissionCommand());
-//        commands.put(GET_USERS_ON_EVENT, new UsersOnEventCommand());
 
     }
 

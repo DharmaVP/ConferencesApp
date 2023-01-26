@@ -3,6 +3,8 @@ package ua.com.vp.confapp.services;
 import ua.com.vp.confapp.dto.UserDTO;
 import ua.com.vp.confapp.exception.ServiceException;
 
+import java.util.List;
+
 public interface UserService extends Service<UserDTO> {
 
 
@@ -14,11 +16,11 @@ public interface UserService extends Service<UserDTO> {
 
     boolean isRegistered(UserDTO userDTO, Long eventId) throws ServiceException;
 
+
 //    void delete(Long userId);
 //
 //    UserDTO findById(Long userId);
 //
-//    List<User> findSpeakers();
 //
 //    void changeRoleToSpeaker(Long userId);
 //

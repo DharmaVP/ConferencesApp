@@ -126,8 +126,10 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
         return new Object[]{
                 report.getTopic(),
                 report.getOutline(),
-                report.getEvent(),
-                report.getSpeaker(),
+                report.getEvent().getId(),
+                report.getSpeaker() != null ? report.getSpeaker().getId() : null,
+                report.getAcceptedByModerator(),
+                report.getAcceptedByModerator()
         };
     }
 
@@ -140,19 +142,23 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
         report.setOutline(resultSet.getString(OUTLINE));
         report.setEvent(event);
         report.setSpeaker(speaker);
-        report.setAccepted(resultSet.getBoolean(ACCEPTED));
+        report.setAcceptedByModerator(resultSet.getBoolean(ACCEPTED_BY_MODERATOR));
+        report.setAcceptedBySpeaker(resultSet.getBoolean(ACCEPTED_BY_SPEAKER));
         return report;
     }
 
     private User obtainSpeaker(ResultSet resultSet) throws SQLException {
-        User user = new User();
-        user.setId(resultSet.getLong(USER_ID));
-        user.setPrefix(getUserPrefix(resultSet));
-        user.setFirstName(resultSet.getString(FIRST_NAME));
-        user.setLastName(resultSet.getString(LAST_NAME));
-        user.setJobTitle(resultSet.getString(JOB_TITLE));
-        user.setOrganisation(resultSet.getString(ORGANISATION));
-        user.setProfileImage(resultSet.getString(PROFILE_PICTURE));
+        User user = null;
+        if (resultSet.getLong(USER_ID) != 0) {
+            user = new User();
+            user.setId(resultSet.getLong(USER_ID));
+            user.setPrefix(getUserPrefix(resultSet));
+            user.setFirstName(resultSet.getString(FIRST_NAME));
+            user.setLastName(resultSet.getString(LAST_NAME));
+            user.setJobTitle(resultSet.getString(JOB_TITLE));
+            user.setOrganisation(resultSet.getString(ORGANISATION));
+            user.setProfileImage(resultSet.getString(PROFILE_PICTURE));
+        }
         return user;
     }
 
@@ -174,6 +180,9 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
         return new Object[]{
                 report.getTopic(),
                 report.getOutline(),
+                report.getSpeaker() == null ? null : report.getSpeaker().getId(),
+                report.getAcceptedByModerator(),
+                report.getAcceptedBySpeaker(),
                 report.getId()
         };
     }
