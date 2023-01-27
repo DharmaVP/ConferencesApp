@@ -105,6 +105,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User.Role> getAllRoles(QueryBuilder queryBuilder) throws ServiceException {
+        List<User.Role> roles;
+
+        try {
+            transaction.beginNoTransaction(roleDAO);
+            roles = roleDAO.getAll(queryBuilder);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        } finally {
+            transaction.endNoTransaction();
+        }
+        return roles;
+    }
+
+    @Override
     public UserDTO getById(Long id) throws ServiceException {
         Optional<User> user;
 

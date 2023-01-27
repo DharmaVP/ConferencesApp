@@ -7,13 +7,14 @@ import java.util.StringJoiner;
 
 import static ua.com.vp.confapp.dao.jdbc_impl.mysql_queries.TablesColumns.*;
 
-public class UserQueryBuilder implements QueryBuilder{
+public class UserQueryBuilder implements QueryBuilder {
     private final List<String> filters;
     private final Set<String> allowedSortFields;
 
     private String sortField;
     private String order;
 
+    boolean showAllRows;
     private int limit;
     private int offset;
 
@@ -23,6 +24,7 @@ public class UserQueryBuilder implements QueryBuilder{
         filters = new ArrayList<>();
         allowedSortFields = Set.of(USER_ID, EMAIL, FIRST_NAME, LAST_NAME, JOB_TITLE, ORGANISATION, NAME);
         order = "ASC";
+        showAllRows = false;
         offset = 0;
         limit = 5;
     }
@@ -43,8 +45,13 @@ public class UserQueryBuilder implements QueryBuilder{
 
     public UserQueryBuilder setRoleFilter(String roleFilter) {
         if (roleFilter != null) {
-            filters.add("name='" + roleFilter+"'");
+            filters.add("name=" + roleFilter);
         }
+        return this;
+    }
+
+    public UserQueryBuilder setRolesFilter(int roleFilter) {
+        filters.add("role_id >=" + roleFilter);
         return this;
     }
 
@@ -63,6 +70,11 @@ public class UserQueryBuilder implements QueryBuilder{
         return this;
     }
 
+    public UserQueryBuilder showAllRows(boolean showAllRows) {
+        this.showAllRows = showAllRows;
+        return this;
+    }
+
     public UserQueryBuilder setLimits(String currenPage, String records) {
         if (records != null && isPositiveInt(records)) {
             this.limit = Integer.parseInt(records);
@@ -76,6 +88,7 @@ public class UserQueryBuilder implements QueryBuilder{
     public String getQuery() {
         return getFilterQuery() + getGroupByQuery() + getSortQuery() + getLimitQuery();
     }
+
 
     public String getRecordQuery() {
         return getFilterQuery();
@@ -99,6 +112,9 @@ public class UserQueryBuilder implements QueryBuilder{
     }
 
     private String getLimitQuery() {
+        if (showAllRows) {
+            return "";
+        }
         return " LIMIT " + offset + ", " + limit;
     }
 

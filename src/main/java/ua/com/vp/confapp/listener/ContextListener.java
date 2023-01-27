@@ -31,12 +31,9 @@ public class ContextListener implements ServletContextListener {
         log("Servlet context destruction finished");
     }
 
-    /**
-     * Initializes i18n subsystem.
-     */
 
 
     private void log(String msg) {
-        System.out.println("[ContextListener] " + msg);
+        LOGGER.info("[ContextListener] " + msg);
     }
 }

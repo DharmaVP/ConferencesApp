@@ -3,6 +3,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/tags.tld" %>
+
 <c:set var="base" value="controller?action=view_event&event_id=${param.event_id}"/>
 <c:set var="setSort" value="&sort="/>
 <c:set var="sortField" value="&sort=${param.sort}"/>
@@ -61,23 +63,24 @@
                 </p>
             </div>
             <div class="w3-auto w3-onethird">
-                <c:choose>
-                    <c:when test="${isRegistered == true}">
-                        <form action=controller method="POST">
-                            <input type="hidden" name="action" value="cancel_registration">
-                            <input type="hidden" name="event_id" value="${param.event_id}">
-                            <button class="w3-pink w3-button">Cancel Registration</button>
-                        </form>
-                    </c:when>
-                    <c:otherwise>
-                        <form action=controller method="POST">
-                            <input type="hidden" name="action" value="register_for_event">
-                            <input type="hidden" name="event_id" value="${param.event_id}">
-                            <button class="w3-green w3-button">Register</button>
-                        </form>
-                    </c:otherwise>
-                </c:choose>
-
+                <ctg:date dateTime="${event.eventDateTime}">
+                    <c:choose>
+                        <c:when test="${isRegistered == true}">
+                            <form action=controller method="POST">
+                                <input type="hidden" name="action" value="cancel_registration">
+                                <input type="hidden" name="event_id" value="${param.event_id}">
+                                <button class="w3-pink w3-button">Cancel Registration</button>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <form action=controller method="POST">
+                                <input type="hidden" name="action" value="register_for_event">
+                                <input type="hidden" name="event_id" value="${param.event_id}">
+                                <button class="w3-green w3-button">Register</button>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
+                </ctg:date>
             </div>
         </div>
         <table class="w3-table w3-striped">

@@ -88,6 +88,7 @@ public class ReportQueryBuilder implements QueryBuilder {
         return getFilterQuery() + getGroupByQuery() + getSortQuery() + getLimitQuery();
     }
 
+
     public String getRecordQuery() {
         return getFilterQuery();
     }

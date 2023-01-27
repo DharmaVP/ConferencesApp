@@ -61,24 +61,51 @@
         <p><strong>Cell Phone: </strong> ${userInfo.phoneNumber}</p>
         <p><strong>Job Title: </strong> ${userInfo.jobTitle}</p>
         <p><strong>Organisation: </strong> ${userInfo.organisation}</p>
-        <form action=controller method="POST">
-            <input type="hidden" name="action" value="change_role">
-            <input type="hidden" name="user_id" value="${userInfo.id}">
-            <div class="w3-margin-bottom">
-                <label><b>Role:</b></label>
+        <p><strong>Current role: </strong> ${userInfo.role}</p>
 
-                <select class="w3-select w3-border w3-hover-light-gray" name="role_name">
-                    <option value="${fn:escapeXml(userInfo.role)}" selected>${fn:escapeXml(userInfo.role)}</option>
-                    <option value="attendee">attendee</option>
-                    <option value="speaker">speaker</option>
-                    <c:if test="${sessionScope.user.role eq 'admin'}">
-                        <option value="moderator">moderator</option>
-                        <option value="admin">admin</option>
-                    </c:if>
-                </select>
-            </div>
-            <button class="w3-green w3-button">Change Role</button>
-        </form>
+
+        <c:choose>
+            <c:when test="${sessionScope.user.role eq 'admin'}">
+
+                <form action=controller method="POST">
+                    <input type="hidden" name="action" value="change_role">
+                    <input type="hidden" name="user_id" value="${userInfo.id}">
+                    <div class="w3-margin-bottom">
+                        <label><b>Role:</b></label>
+
+                        <select class="w3-select w3-border w3-hover-light-gray" name="role_name">
+                            <c:forEach var="role" items="${roleList}">
+                                <option value="${role.name}" ${role.name eq userInfo.role ? 'selected' : ''}>${role.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <button class="w3-green w3-button">Change Role</button>
+                </form>
+
+            </c:when>
+            <c:when test="${sessionScope.user.role eq 'moderator' and (userInfo.role eq 'attendee' or userInfo.role eq 'speaker')}">
+
+                <form action=controller method="POST">
+                    <input type="hidden" name="action" value="change_role">
+                    <input type="hidden" name="user_id" value="${userInfo.id}">
+                    <div class="w3-margin-bottom">
+                        <label><b>Role:</b></label>
+
+                        <select class="w3-select w3-border w3-hover-light-gray" name="role_name">
+                            <c:forEach var="role" items="${roleList}">
+                                <option value="${role.name}" ${role.name eq userInfo.role ? 'selected' : ''}>${role.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <button class="w3-green w3-button">Change Role</button>
+                </form>
+
+            </c:when>
+            <c:otherwise>
+
+            </c:otherwise>
+        </c:choose>
+
 
     </div>
 

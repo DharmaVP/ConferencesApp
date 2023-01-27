@@ -10,6 +10,7 @@ import ua.com.vp.confapp.dto.UserDTO;
 import ua.com.vp.confapp.exception.ServiceException;
 import ua.com.vp.confapp.services.ServiceFactory;
 import ua.com.vp.confapp.services.UserService;
+import ua.com.vp.confapp.utils.querybuilder.UserQueryBuilder;
 
 import static ua.com.vp.confapp.command.constants.CommandType.VIEW_EVENT;
 import static ua.com.vp.confapp.command.constants.CommandType.VIEW_USER;
@@ -33,6 +34,7 @@ public class ChangeRoleCommand implements Command {
         String page = CommandUtil.getCommandToRedirect(VIEW_USER)+"&user_id="+userId;
         try {
             userService.changeRole(userId, role);
+
             request.getSession().setAttribute("success", "Role has been changed to " + role);
         } catch (ServiceException e) {
             request.getSession().setAttribute(ERROR, "Couldn't change role");

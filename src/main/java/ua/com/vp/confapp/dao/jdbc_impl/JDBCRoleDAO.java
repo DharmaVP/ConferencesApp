@@ -82,7 +82,9 @@ public class JDBCRoleDAO extends JDBCEntityDAO implements RoleDAO {
     @Override
     public List<User.Role> getAll(QueryBuilder queryBuilder) throws DAOException  {
         List<User.Role> roles = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_ROLES);
+        String conditionQuery = queryBuilder.getQuery();
+
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_ROLES + conditionQuery);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 roles.add(map(resultSet));

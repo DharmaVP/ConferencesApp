@@ -112,6 +112,7 @@ public class EventQueryBuilder implements QueryBuilder {
         return getFilterQuery() + getGroupByQuery() + getSortQuery() + getLimitQuery();
     }
 
+
     public String getRecordQuery() {
         return getFilterQuery();
     }

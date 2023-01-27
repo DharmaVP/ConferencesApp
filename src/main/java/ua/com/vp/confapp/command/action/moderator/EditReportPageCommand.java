@@ -48,6 +48,6 @@ public class EditReportPageCommand implements Command {
     }
 
     private QueryBuilder createQueryBuilder(HttpServletRequest request) {
-        return new UserQueryBuilder().setRoleFilter("speaker");
+        return new UserQueryBuilder().setRoleFilter("speaker").showAllRows(true);
     }
 }

@@ -26,7 +26,8 @@ public class AddReportPageCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         QueryBuilder queryBuilder = new UserQueryBuilder()
-                .setRoleFilter("speaker");
+                .setRoleFilter("speaker")
+                .showAllRows(true);
 
         List<UserDTO> speakers = null;
 
