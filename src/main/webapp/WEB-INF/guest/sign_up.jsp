@@ -16,6 +16,8 @@
 <fmt:message key="signup.button.submit" var="signup"/>
 
 
+
+
 <!DOCTYPE html>
 <html lang="${language}">
 <head>
@@ -56,7 +58,7 @@
     </script>
 </head>
 <body>
-<jsp:include page="../fragments/header.jsp"></jsp:include>
+<jsp:include page="../fragments/header.jsp" />
 
 <div class="w3-container w3-margin-top" style="padding:128px 16px" id="home">
     <form class="w3-container w3-card-4 w3-auto" style="max-width:400px" action="controller?action=sign-up"
@@ -67,7 +69,7 @@
                 <input class="w3-input w3-border w3-hover-light-gray" type="text"
                        placeholder="Enter Your Email"
                        name="email" value="${fn:escapeXml(param.email)}" required>
-                <span class="w3-text-red">${errors.email}</span>
+                <span class="w3-text-red"><c:if test="${not empty errors.email}"> <fmt:message key="${errors.email}"/></c:if></span>
             </div>
             <div class="w3-margin-bottom">
                 <label><b>${password}:</b></label>

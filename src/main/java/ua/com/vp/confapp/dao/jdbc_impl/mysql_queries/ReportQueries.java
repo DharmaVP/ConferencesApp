@@ -3,7 +3,7 @@ package ua.com.vp.confapp.dao.jdbc_impl.mysql_queries;
 public final class ReportQueries {
 
     public static final String SQL_ADD_REPORT =
-            "INSERT INTO report (topic, outline, event_event_id, users_user_id, accepted_by_speaker, accepted_by_moderator) " +
+            "INSERT INTO report (topic, outline, event_event_id, users_user_id, accepted_by_moderator, accepted_by_speaker) " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
 
     public static final String SQL_FIND_REPORT_BY_ID =

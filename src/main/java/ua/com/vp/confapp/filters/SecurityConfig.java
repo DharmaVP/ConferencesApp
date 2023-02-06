@@ -20,9 +20,12 @@ public class SecurityConfig {
         attendeeCommands = EnumSet.of(
                 ENTER_CABINET,
                 GET_PROFILE,
-                REGISTER_FOR_EVENT,
+                EDIT_USER,
                 VIEW_EVENT,
-                USER_EVENTS
+                REGISTER_FOR_EVENT,
+                CANCEL_REGISTRATION,
+                USER_EVENTS,
+                SIGN_OUT
         );
 
         mapConfig.put(ROLE_ATTENDEE, attendeeCommands);
@@ -30,7 +33,14 @@ public class SecurityConfig {
 
     static {
         speakerCommands = EnumSet.of(
-                ADD_REPORT
+                VIEW_EVENTS_TO_SPEAK,
+                VIEW_EVENT_TO_SPEAK,
+                PROPOSE_REPORT,
+                PROPOSE_SPEAKER,
+                ACCEPT_REPORT,
+                DROP_REPORT,
+                VIEW_REPORT,
+                VIEW_SPEAKER_REPORTS
         );
         speakerCommands.addAll(attendeeCommands);
 
@@ -39,22 +49,34 @@ public class SecurityConfig {
 
     static {
         moderatorCommands = EnumSet.of(
+                MANAGE_EVENTS,
                 ADD_EVENT,
+                ADD_EVENT_PAGE,
                 REMOVE_EVENT,
+                GET_EVENT_TO_EDIT,
+                EDIT_EVENT_PAGE,
                 EDIT_EVENT,
-                GET_ALL_USERS
+                SET_VISITORS,
+
+                ADD_REPORT_PAGE,
+                ADD_REPORT,
+                EDIT_REPORT,
+                DELETE_REPORT,
+                GET_ALL_REPORTS,
+                APPROVE_SPEAKER,
+                CHANGE_SPEAKER,
+
+                GET_ALL_USERS,
+                VIEW_USER,
+                CHANGE_ROLE
         );
-        moderatorCommands.addAll(speakerCommands);
+        moderatorCommands.addAll(attendeeCommands);
 
         mapConfig.put(ROLE_MODERATOR, moderatorCommands);
     }
 
     static {
-       adminCommands = EnumSet.of(
-                EDIT_USER_PHOTO
-        );
-        adminCommands.addAll(moderatorCommands);
-
+        adminCommands = EnumSet.copyOf(moderatorCommands);
         mapConfig.put(ROLE_ADMIN, adminCommands);
     }
 

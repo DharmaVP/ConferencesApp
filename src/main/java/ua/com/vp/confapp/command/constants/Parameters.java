@@ -1,7 +1,5 @@
 package ua.com.vp.confapp.command.constants;
 
-import java.time.LocalDateTime;
-
 public interface Parameters {
     //Names
     String CONTROLLER = "controller";

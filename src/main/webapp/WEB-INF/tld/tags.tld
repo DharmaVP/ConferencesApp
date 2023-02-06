@@ -19,6 +19,22 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <name>disable</name>
+        <tag-class>ua.com.vp.confapp.tag.DisableButtonTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>dateTime</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>disableForPast</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>
 
 

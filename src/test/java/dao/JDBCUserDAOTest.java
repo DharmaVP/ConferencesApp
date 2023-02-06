@@ -44,7 +44,7 @@ class JDBCUserDAOTest {
     }
 
     @Test
-    public void testCreate_ShouldCreateUser() throws Exception {
+    void testCreate_ShouldCreateUser() throws Exception {
         User user = new User();
         user.setEmail("cat@gmail.com");
         user.setPassword("meow");
@@ -53,7 +53,7 @@ class JDBCUserDAOTest {
     }
 
     @Test
-    public void testCreate_ShouldThrowIllegalArgumentException_WhenIdIsNotNull() throws Exception {
+    void testCreate_ShouldThrowIllegalArgumentException_WhenIdIsNotNull() throws Exception {
         User user = new User();
         user.setId(1L);
         user.setEmail("cat@gmail.com");
@@ -62,7 +62,7 @@ class JDBCUserDAOTest {
     }
 
     @Test
-    public void testCreate_ShouldThrowDAOException_WhenCreatingUserFailed() throws Exception {
+    void testCreate_ShouldThrowDAOException_WhenCreatingUserFailed() throws Exception {
         User user = new User();
         user.setEmail("cat@gmail.com");
         user.setPassword("meow");
@@ -71,7 +71,7 @@ class JDBCUserDAOTest {
     }
 
     @Test
-    public void testCreate_ShouldThrowDAOException_WhenSQLExceptionOccurs() throws Exception {
+    void testCreate_ShouldThrowDAOException_WhenSQLExceptionOccurs() throws Exception {
         User user = new User();
         user.setEmail("cat@gmail.com");
         user.setPassword("meow");

@@ -30,7 +30,7 @@ public class AcceptReportCommand implements Command {
         Boolean decision = Boolean.parseBoolean(request.getParameter("approve"));
         UserDTO speaker = (UserDTO) request.getSession().getAttribute(SESSION_USER);
 
-        String page = CommandUtil.getCommandToRedirect(VIEW_SPEAKER_REPORTS)+"&speaker_id=true&moderator=false&speaker=true";
+        String page = CommandUtil.getCommandToRedirect(VIEW_SPEAKER_REPORTS)+"&speaker_id=true&moderator=true&speaker=false";
 
         try {
             reportService.accept(reportId, speaker, decision);

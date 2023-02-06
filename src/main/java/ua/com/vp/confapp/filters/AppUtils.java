@@ -24,8 +24,7 @@ public class AppUtils {
 
     // Получить информацию пользователя, сохраненную в Session.
     public static UserDTO getLoginedUser(HttpSession session) {
-        UserDTO loginedUser = (UserDTO) session.getAttribute(SESSION_USER);
-        return loginedUser;
+        return (UserDTO) session.getAttribute(SESSION_USER);
     }
 
     public static int storeRedirectAfterLoginUrl(HttpSession session, String requestUri) {

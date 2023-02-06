@@ -1,7 +1,7 @@
 package ua.com.vp.confapp.exception;
 
-public final class ExceptionMessage {
-//        public static final String ENTER_CORRECT_EMAIL = "error.email.format";
+public interface ExceptionMessage {
+        String ENTER_CORRECT_EMAIL = "error.email.format";
 //        public static final String ENTER_CORRECT_PASSWORD = "error.pass.format";
 //        public static final String ENTER_CORRECT_NAME = "error.name.format";
 //        public static final String ENTER_CORRECT_SURNAME = "error.surname.format";
@@ -18,5 +18,5 @@ public final class ExceptionMessage {
 //        public static final String NO_USER = "error.email.absent";
 //        public static final String PASSWORD_MATCHING = "error.pass.match";
 
-        private ExceptionMessage() {};
+
 }

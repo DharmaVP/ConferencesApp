@@ -47,14 +47,15 @@ public class ViewSpeakerReportsCommand implements Command {
 
     private QueryBuilder createQueryBuilder(HttpServletRequest request) {
         UserDTO speaker = (UserDTO) request.getSession().getAttribute(SESSION_USER);
-        Boolean acceptedByModerator = Boolean.parseBoolean(request.getParameter("moderator"));
-        Boolean acceptedBySpeaker = Boolean.parseBoolean(request.getParameter("speaker"));
+        boolean acceptedByModerator = Boolean.parseBoolean(request.getParameter("moderator"));
+        boolean acceptedBySpeaker = Boolean.parseBoolean(request.getParameter("speaker"));
+        boolean isSpeakerPresent = Boolean.parseBoolean(request.getParameter("speaker_id"));
 
         return new ReportQueryBuilder()
-                .setSpeakerIdFilter((acceptedByModerator || acceptedBySpeaker) ? speaker.getId() : -1)
-                .setSpeakerPresence(Boolean.parseBoolean(request.getParameter("speaker_id")))
-                .setAcceptedByModerator(Boolean.parseBoolean(request.getParameter("moderator")))
-                .setAcceptedBySpeaker(Boolean.parseBoolean(request.getParameter("speaker")))
+                .setSpeakerIdFilter(isSpeakerPresent ? speaker.getId() : -1)
+                .setSpeakerPresence(isSpeakerPresent)
+                .setAcceptedByModerator(acceptedByModerator)
+                .setAcceptedBySpeaker(acceptedBySpeaker)
                 .setSortField(request.getParameter("sort"))
                 .setOrder(request.getParameter("order"))
                 .setLimits(request.getParameter("page"), request.getParameter("records"));

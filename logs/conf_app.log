@@ -1,4 +1,4 @@
-2023-01-24 18:33:11 [http-nio-8080-exec-22] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
-2023-01-24 18:33:17 [http-nio-8080-exec-33] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
-2023-01-24 18:36:25 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
-2023-01-24 18:36:28 [http-nio-8080-exec-8] ERROR com.vp.confapp.controller.FrontController - Invalid type of request!
+2023-02-06 14:21:47 [http-nio-8080-exec-20] INFO  confapp.command.action.guest.SignUpCommand - user with login = vladimir.katze@gmail.com was registered
+2023-02-06 14:28:09 [http-nio-8080-exec-27] INFO  confapp.command.action.guest.SignUpCommand - user with login = vladimir.katze@gmail.com was registered
+2023-02-06 14:31:54 [http-nio-8080-exec-26] INFO  confapp.command.action.guest.SignUpCommand - user with login = vladimir.katze@gmail.com was registered
+2023-02-06 14:39:17 [http-nio-8080-exec-25] INFO  confapp.command.action.guest.SignUpCommand - user with login = vladimir.katze@gmail.com was registered

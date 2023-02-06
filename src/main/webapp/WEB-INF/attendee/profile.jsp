@@ -6,7 +6,6 @@
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="resources"/>
 
-
 <fmt:message key="succeed.registered" var="success"/>
 <fmt:message key="finish.registration" var="finish"/>
 

@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/tags.tld" %>
+
 
 <c:set var="base" value="controller?action=get_event_to_edit&event_id=${param.event_id}"/>
 <c:set var="setSort" value="&sort="/>
@@ -63,25 +65,32 @@
             <form action="controller" method="GET">
                 <input name="action" value="edit_event_page" type="hidden"/>
                 <input name="event_id" value="${event.id}" type="hidden"/>
-                <button class="w3-button w3-green w3-hover" onclick="submit()">Edit</button>
+                <button class="w3-button w3-green w3-hover" onclick="submit()"  <ctg:disable
+                        dateTime="${event.eventDateTime}" disableForPast="true"/>>Edit
+                </button>
             </form>
 
         </div>
 
     </div>
-    <div class="w3-padding-64  w3-half">
+    <div class="w3-padding-64 w3-half">
         <h1 class="w3-text-teal">Statistics</h1>
         <div class="w3-panel w3-border-pink">
             <p><b>Registered users: </b> ${event.participants}</p>
             <p><b>Real visitors: </b> ${event.visitors}</p>
             <p><b>Reports: </b> ${event.numberOfReports}</p>
-            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Set Visitors</button>
+            <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green"
+                    <ctg:disable dateTime="${event.eventDateTime}" disableForPast="false"/> />
+            Set Visitors
+            </button>
 
             <div id="id01" class="w3-modal">
                 <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
                     <div class="w3-center"><br>
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                        <span onclick="document.getElementById('id01').style.display='none'"
+                              class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                              title="Close Modal">&times;</span>
                     </div>
 
                     <form class="w3-container" action="controller" method="POST">
@@ -91,7 +100,8 @@
                             <input type="hidden" name="event_id" value="${event.id}">
                             <input type="hidden" name="date_time" value="${event.eventDateTime}">
                             <input type="hidden" name="participants" value="${event.participants}">
-                            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="visitors" pattern="^\d*$" required>
+                            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
+                                   name="visitors" pattern="^\d*$" required>
 
                             <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Set</button>
 
@@ -99,7 +109,9 @@
                     </form>
 
                     <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                        <button onclick="document.getElementById('id01').style.display='none'" type="button"
+                                class="w3-button w3-red">Cancel
+                        </button>
                     </div>
 
                 </div>
@@ -111,7 +123,9 @@
     <form action="controller" method="GET">
         <input name="action" value="add_report_page" type="hidden"/>
         <input name="event_id" value="${event.id}" type="hidden"/>
-        <button class="w3-button w3-green w3-hover" onclick="submit()">Add report</button>
+        <button class="w3-button w3-green w3-hover" onclick="submit()" <ctg:disable
+                dateTime="${event.eventDateTime}" disableForPast="true"/> >Add report
+        </button>
     </form>
     <table class="w3-table w3-striped">
         <caption>Reports</caption>
@@ -216,13 +230,17 @@
 
     </div>
 
-    <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-pink w3-large">Delete event</button>
+    <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-pink w3-large"
+            <ctg:disable dateTime="${event.eventDateTime}" disableForPast="true"/> >Delete
+        event
+    </button>
 
     <div id="id02" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
             <div class="w3-center"><br>
-                <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('id02').style.display='none'"
+                      class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
             </div>
 
             <form class="w3-container" action="controller" method="POST">
@@ -237,7 +255,9 @@
             </form>
 
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                <button onclick="document.getElementById('id01').style.display='none'" type="button"
+                        class="w3-button w3-red">Cancel
+                </button>
             </div>
 
         </div>

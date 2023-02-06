@@ -8,13 +8,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+import static ua.com.vp.confapp.exception.ExceptionMessage.ENTER_CORRECT_EMAIL;
 import static ua.com.vp.confapp.utils.RegexKeeper.*;
 
 public final class Validator {
 
 
     public static void validateEmail(String email) throws ValidationException {
-        validateFormat(email, REGEX_EMAIL, "Enter correct email");
+        validateFormat(email, REGEX_EMAIL, ENTER_CORRECT_EMAIL);
     }
 
     public static void validatePassword(String password) throws ValidationException {

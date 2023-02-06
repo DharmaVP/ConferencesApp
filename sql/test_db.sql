@@ -65,8 +65,8 @@ VALUES (1, 1),
 
 
 INSERT INTO event (event_id, name, description, event_date, visitors, place_place_id)
-VALUES (DEFAULT, 'Loyalty Programs', 'Main trends of 2023', '2022-01-25 11:45:00', DEFAULT, 1),
-       (DEFAULT, 'Fashion trends', 'Whats new', '2023-02-15 12:00:00', DEFAULT, 1),
+VALUES (DEFAULT, 'Loyalty Programs', 'Main trends of 2023', '2023-04-25 11:45:00', DEFAULT, 1),
+       (DEFAULT, 'Fashion trends', 'Whats new', '2023-04-15 12:00:00', DEFAULT, 1),
        (DEFAULT, 'The best marketing ads of 2022', 'We will watch the best ads', '2023-03-21 16:30:00',
         DEFAULT, 2),
        (DEFAULT, 'Fuckup nights', 'Experience of big mistakes', '2023-03-23 14:25:00', DEFAULT, 3),

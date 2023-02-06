@@ -129,7 +129,7 @@ public class JDBCReportDAO extends JDBCEntityDAO implements ReportDAO {
                 report.getEvent().getId(),
                 report.getSpeaker() != null ? report.getSpeaker().getId() : null,
                 report.getAcceptedByModerator(),
-                report.getAcceptedByModerator()
+                report.getAcceptedBySpeaker()
         };
     }
 

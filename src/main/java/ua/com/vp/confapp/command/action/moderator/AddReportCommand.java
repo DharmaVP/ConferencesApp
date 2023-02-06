@@ -29,6 +29,7 @@ public class AddReportCommand implements Command {
         String outline = request.getParameter("outline");
         String speaker = request.getParameter("speaker_id");
         Long speakerId = null;
+        reportDTO.setAcceptedByModerator(false);
         if (!speaker.isEmpty()) {
             speakerId = Long.parseLong(speaker);
             reportDTO.setAcceptedByModerator(true);
@@ -37,6 +38,7 @@ public class AddReportCommand implements Command {
         reportDTO.setOutline(outline);
         reportDTO.setEventId(eventId);
         reportDTO.setSpeakerId(speakerId);
+        reportDTO.setAcceptedBySpeaker(false);
 
         String page = CommandUtil.getCommandToRedirect(CommandType.GET_EVENT_TO_EDIT)+"&event_id="+eventId;
 
