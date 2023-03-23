@@ -3,17 +3,20 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language"
-       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-       scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="resources"/>
 
 
-<fmt:message key="signup.label.email" var="email"/>
-<fmt:message key="signup.label.password" var="password"/>
-<fmt:message key="signup.label.confirm_password" var="confirm_password"/>
-<fmt:message key="signup.button.submit" var="signup"/>
+<fmt:message key="sidebar.menu" var="menu"/>
+<fmt:message key="sidebar.main" var="main"/>
+<fmt:message key="sidebar.info" var="myInfo"/>
+<fmt:message key="sidebar.events" var="myEvents"/>
+<fmt:message key="sidebar.edit.events" var="editEvents"/>
+<fmt:message key="sidebar.users" var="users"/>
+<fmt:message key="sidebar.reports" var="reports"/>
+<fmt:message key="sidebar.speaker.events" var="speakOnEvent"/>
+<fmt:message key="sidebar.sign.out" var="signOut"/>
+
 
 <!-- Sidebar -->
 <nav class="w3-sidebar-wth-height w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left"
@@ -22,40 +25,40 @@
        class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
         <i class="fa fa-remove"></i>
     </a>
-    <h4 class="w3-bar-item"><b>Menu</b></h4>
+    <h4 class="w3-bar-item"><b>${menu}</b></h4>
 
     <c:choose>
         <c:when test="${sessionScope.user.role eq 'admin'}">
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=manage_events">Edit Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_users">Users</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_reports&speaker_id=true&moderator=false&speaker=true">Reports</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">${main}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">${myInfo}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">${myEvents}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=manage_events">${editEvents}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_users">${users}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_reports&speaker_id=true&moderator=false&speaker=true">${reports}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">${signOut}</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'moderator'}">
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=manage_events">Edit Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_users">Users</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_reports&speaker_id=true&moderator=false&speaker=true">Reports</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">${main}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">${myInfo}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">${myEvents}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=manage_events">${editEvents}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_users">${users}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_all_reports&speaker_id=true&moderator=false&speaker=true">${reports}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">${signOut}</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'speaker'}">
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=view_events_to_speak">Events to speak</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=view_speaker_reports&speaker_id=true&moderator=true&speaker=false">Reports</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">${main}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">${myInfo}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">${myEvents}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=view_events_to_speak">${speakOnEvent}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=view_speaker_reports&speaker_id=true&moderator=true&speaker=false">${reports}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">${signOut}</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'attendee'}">
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">Main</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">My Info</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">My Events</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">Sign out</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=enter_cabinet">${main}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=get_profile">${myInfo}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=user_events">${myEvents}</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="controller?action=sign-out">${signOut}</a>
         </c:when>
     </c:choose>
 </nav>

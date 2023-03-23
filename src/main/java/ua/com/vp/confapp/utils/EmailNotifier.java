@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -47,12 +48,13 @@ public class EmailNotifier {
         } catch (MessagingException e) {
             e.printStackTrace();
             logger.error("Error sending email!", e);
-           // throw new ServiceException(e);
+            // throw new ServiceException(e);
         }
     }
 
     public void sendWelcomeLetter(String sendTo) throws ServiceException {
         final String WELCOME_LETTER = getWelcomeContent();
+        if (WELCOME_LETTER == null) return;
         send(sendTo, "Welcome to the Conferences World!", WELCOME_LETTER);
     }
 
@@ -74,8 +76,15 @@ public class EmailNotifier {
 
     private String getWelcomeContent() {
         Path path = null;
+
+
         try {
-            path = Paths.get(Thread.currentThread().getContextClassLoader().getResource("..\\..\\template\\email\\welcome_letter.html").toURI());
+            URL url = getClass().getClassLoader().getResource("..\\..\\template\\email\\welcome_letter.html");
+            if (url == null) {
+                logger.log(Level.FATAL, "URL is null");
+                return null;
+            }
+            path = Paths.get(getClass().getClassLoader().getResource("..\\..\\template\\email\\welcome_letter.html").toURI());
         } catch (Exception e) {
             logger.log(Level.FATAL, "URI error", e);
         }
@@ -87,7 +96,7 @@ public class EmailNotifier {
 //        return readFromFile("/template/email/warning_letter.html");
 //    }
 
-    private String readFromFile(Path path){
+    private String readFromFile(Path path) {
         StringBuilder contentBuilder = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(path.toString()))) {
             String str;

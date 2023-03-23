@@ -46,7 +46,6 @@ public final class DAOUtil {
     /**
      * Set the given parameter values in the given PreparedStatement.
      *
-     * @param connection The PreparedStatement to set the given parameter values in.
      * @param values     The parameter values to be set in the created PreparedStatement.
      * @throws SQLException If something fails during setting the PreparedStatement values.
      */

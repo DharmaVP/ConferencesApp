@@ -19,7 +19,7 @@ public final class Validator {
     }
 
     public static void validatePassword(String password) throws ValidationException {
-        validateFormat(password, REGEX_PASSWORD, "From 8 to 10 eight characters, at least one letter, one number and one special character:");
+        validateFormat(password, REGEX_PASSWORD, "From 8 to 16 eight characters, at least one letter, one number and one special character:");
     }
 
     public static void validateConfirmPassword(String password, String confirmPassword) throws ValidationException {

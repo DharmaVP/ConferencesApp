@@ -3,18 +3,20 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language"
-       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
-       scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="resources"/>
 
 
 <fmt:message key="signup.label.email" var="email"/>
+<fmt:message key="signup.placeholder.email" var="enterEmail"/>
 <fmt:message key="signup.label.password" var="password"/>
+<fmt:message key="signup.placeholder.password" var="enterPassword"/>
 <fmt:message key="signup.label.confirm_password" var="confirm_password"/>
+<fmt:message key="signup.placeholder.confirm_password" var="confirmPassword"/>
+<fmt:message key="signup.show_password" var="showPassword"/>
 <fmt:message key="signup.button.submit" var="signup"/>
-
+<fmt:message key="signup.signin" var="goToSignin"/>
+<fmt:message key="signin.button.signin" var="signin"/>
 
 
 
@@ -67,20 +69,20 @@
             <div class="w3-margin-bottom">
                 <label><b>${email}:</b></label>
                 <input class="w3-input w3-border w3-hover-light-gray" type="text"
-                       placeholder="Enter Your Email"
+                       placeholder="${enterEmail}"
                        name="email" value="${fn:escapeXml(param.email)}" required>
                 <span class="w3-text-red"><c:if test="${not empty errors.email}"> <fmt:message key="${errors.email}"/></c:if></span>
             </div>
             <div class="w3-margin-bottom">
                 <label><b>${password}:</b></label>
-                <input class="w3-input w3-border w3-hover-light-gray" type="password" placeholder="Enter Password"
+                <input class="w3-input w3-border w3-hover-light-gray" type="password" placeholder="${enterPassword}"
                        name="password" id="password"
                        value="${fn:escapeXml(param.password)}" required>
                 <span class="w3-text-red">${errors.password}</span>
             </div>
             <div class="w3-margin-bottom">
                 <label><b>${confirm_password}:</b></label>
-                <input class="w3-input w3-border w3-hover-light-gray" type="password" placeholder="Confirm password"
+                <input class="w3-input w3-border w3-hover-light-gray" type="password" placeholder="${confirmPassword}"
                        name="confirm_password" id="retypedpassword"
                        value="${fn:escapeXml(param.confirm_password)}" required>
                 <span class="w3-text-red">${errors.confirm_password}</span>
@@ -90,12 +92,12 @@
                     <input type="checkbox" onclick="toggle()">
                     <span class="slider"></span>
                 </label>
-                <span>Show password</span>
+                <span>${showPassword}</span>
             </div>
-            <button class="w3-button w3-block w3-pink w3-section w3-padding" type="submit">Sign up</button>
+            <button class="w3-button w3-block w3-pink w3-section w3-padding" type="submit">${signup}</button>
             <div w3-panel>
-                <span>Already have account?</span>
-                <a href="controller?action=get_sign_in_page" class="w3-right w3-hover-text-blue">Sign in</a>
+                <span>${goToSignin}</span>
+                <a href="controller?action=get_sign_in_page" class="w3-right w3-hover-text-blue">${signin}</a>
             </div>
             <c:if test="${not empty error}">
                 <div class="w3-panel w3-pale-red w3-leftbar w3-border-red">

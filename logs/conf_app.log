@@ -1,4 +1,2 @@
-2023-02-06 14:21:47 [http-nio-8080-exec-20] INFO  confapp.command.action.guest.SignUpCommand - user with login = vladimir.katze@gmail.com was registered
-2023-02-06 14:28:09 [http-nio-8080-exec-27] INFO  confapp.command.action.guest.SignUpCommand - user with login = vladimir.katze@gmail.com was registered
-2023-02-06 14:31:54 [http-nio-8080-exec-26] INFO  confapp.command.action.guest.SignUpCommand - user with login = vladimir.katze@gmail.com was registered
-2023-02-06 14:39:17 [http-nio-8080-exec-25] INFO  confapp.command.action.guest.SignUpCommand - user with login = vladimir.katze@gmail.com was registered
+2023-03-14 00:58:38 [http-nio-8080-exec-6] ERROR com.vp.confapp.controller.FrontController - No such command exist
+2023-03-14 03:50:45 [http-nio-8080-exec-5] ERROR com.vp.confapp.controller.FrontController - No such command exist

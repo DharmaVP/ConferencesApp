@@ -59,6 +59,9 @@ public class SignUpCommand implements Command {
             Validator.validateConfirmPassword(password, confirmPassword);
         } catch (ValidationException e) {
             messages.put("confirm_password", e.getMessage());
+        }
+
+        if (messages.size() > 0) {
             return new CommandResult(SIGN_UP_PAGE);
         }
 

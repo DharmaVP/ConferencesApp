@@ -8,9 +8,16 @@
 
 
 <fmt:message key="signup.label.email" var="email"/>
+<fmt:message key="signup.placeholder.email" var="enterEmail"/>
 <fmt:message key="signup.label.password" var="password"/>
-<fmt:message key="signup.label.confirm_password" var="confirm_password"/>
+<fmt:message key="signup.placeholder.password" var="enterPassword"/>
+<fmt:message key="signup.show_password" var="showPassword"/>
+<fmt:message key="signin.button.signin" var="signin"/>
+<fmt:message key="signin.remember" var="remeberMe"/>
+<fmt:message key="signin.forgot" var="forgotPass"/>
 <fmt:message key="signup.button.submit" var="signup"/>
+<fmt:message key="signin.signup" var="goToSignup"/>
+
 
 <!DOCTYPE html>
 <html lang="${language}">
@@ -48,7 +55,7 @@
     </script>
 </head>
 <body>
-<jsp:include page="../fragments/header.jsp"></jsp:include>
+<jsp:include page="../fragments/header.jsp"/>
 
 
 <div class="w3-container w3-margin-top" style="padding:128px 16px" id="home">
@@ -59,13 +66,13 @@
                 <input type="hidden" name="redirectId" value="${param.redirectId}" />
                 <label><b>${email}:</b></label>
                 <input class="w3-input w3-border w3-hover-light-gray" type="text"
-                       placeholder="Enter Your Email"
+                       placeholder="${enterEmail}"
                        name="email" value="${fn:escapeXml(param.email)}" required>
                 <span class="error">${errors.email}</span>
             </div>
             <div class="w3-margin-bottom">
                 <label><b>${password}:</b></label>
-                <input class="w3-input w3-border w3-hover-light-gray" type="password" placeholder="Enter Password"
+                <input class="w3-input w3-border w3-hover-light-gray" type="password" placeholder="${enterPassword}"
                        name="password" id="myInput"
                        value="${fn:escapeXml(param.password)}" required>
                 <span class="error">${errors.password}</span>
@@ -75,12 +82,12 @@
                     <input type="checkbox" onclick="toggle()">
                     <span class="slider"></span>
                 </label>
-                <span>Show password</span>
+                <span>${showPassword}</span>
             </div>
-            <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Sign in</button>
+            <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">${signin}</button>
             <div w3-panel>
-                <span>Have no account?</span>
-                <a href="controller?action=get_sign_up_page" class="w3-right w3-hover-text-blue">Sign up</a>
+                <span>${goToSignup}</span>
+                <a href="controller?action=get_sign_up_page" class="w3-right w3-hover-text-blue">${signup}</a>
             </div>
             <c:if test="${not empty errors.error}">
                 <div class="w3-panel w3-pale-red w3-leftbar w3-border-red">
@@ -93,8 +100,8 @@
                 </div>
             </c:if>
             <div>
-                <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
-                <span class="w3-right w3-hide-small w3-margin-top">Forgot <a href="#">password?</a></span>
+                <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> ${remeberMe}
+                <span class="w3-right w3-hide-small w3-margin-top"><a href="#">${forgotPass}</a></span>
             </div>
         </div>
     </form>

@@ -10,9 +10,6 @@
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="resources"/>
 
-
-
-
 <fmt:message key="signup.label.email" var="email"/>
 <fmt:message key="signup.label.password" var="password"/>
 <fmt:message key="signup.label.confirm_password" var="confirm_password"/>

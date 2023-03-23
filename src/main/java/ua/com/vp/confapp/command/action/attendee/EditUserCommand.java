@@ -11,6 +11,7 @@ import ua.com.vp.confapp.command.action.guest.SignUpCommand;
 import ua.com.vp.confapp.command.constants.CommandType;
 import ua.com.vp.confapp.dto.UserDTO;
 import ua.com.vp.confapp.exception.ServiceException;
+import ua.com.vp.confapp.exception.ValidationException;
 import ua.com.vp.confapp.services.ServiceFactory;
 import ua.com.vp.confapp.services.UserService;
 
@@ -28,6 +29,20 @@ public class EditUserCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
 
+        UserDTO userDTO = getUserDTO(request);
+        String page = CommandUtil.getCommandToRedirect(CommandType.GET_PROFILE);
+
+        try {
+            userService.update(userDTO);
+        } catch (ServiceException e) {
+            request.setAttribute("error", "unable to update info");
+            return new CommandResult(PROFILE);
+        }
+        return new CommandResult(page, true);
+    }
+
+    private UserDTO getUserDTO(HttpServletRequest request) {
+
         String prefix = request.getParameter("prefix");
         String firstName = request.getParameter("first_name");
         String lastName = request.getParameter("last_name");
@@ -43,17 +58,7 @@ public class EditUserCommand implements Command {
         userDTO.setPhoneNumber(phoneNumber);
         userDTO.setJobTitle(jobTitle);
         userDTO.setOrganisation(organisation);
-
-
-        String page = CommandUtil.getCommandToRedirect(CommandType.GET_PROFILE);
-
-        try {
-            userService.update(userDTO);
-        } catch (ServiceException e) {
-            request.setAttribute("error", "unable to update info");
-            return new CommandResult(PROFILE);
-        }
-        return new CommandResult(page, true);
+        return userDTO;
     }
 
     private String preparePhoneNumber(String cellPhone) {
